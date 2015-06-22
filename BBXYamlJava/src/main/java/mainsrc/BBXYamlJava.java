@@ -13,6 +13,10 @@ package mainsrc;
 public class BBXYamlJava {
     
     public static void main(String [] args){
-        new YamlInparse();
+        YamlInparse  inp=new YamlInparse();
+        inp.updateFile();
+//        inp.parseAtom();
+        inp.parse();
+        inp.listAllAssemblers();
     }
 }

@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mainsrc;
+package mainsrc.datatypes;
 
 /**
  *
  * @author Mark
  * Representation of an Application. 
  */
-public class Application {
+public abstract class Application {
+   
     
 }

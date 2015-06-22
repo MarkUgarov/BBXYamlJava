@@ -12,6 +12,18 @@
         <maven.compiler.source>1.7</maven.compiler.source>
     </properties>
     
+    <repositories>
+        <repository>
+            <id>neotax-repository</id>
+            <url>https://github.com/cerebis/neotax/raw/master</url>
+        </repository>
+        <repository>
+		<id>codehaus</id>
+		<url>http://repository.codehaus.org/org/codehaus</url>
+	</repository>
+    </repositories>
+    
+    
 
     <dependencies>
         <dependency>
@@ -25,25 +37,45 @@
             <version>2.0.2</version>
             <type>jar</type>
         </dependency>
+       <dependency>
+            <groupId>mzd.github</groupId>
+            <artifactId>neotax</artifactId>
+            <version>0.1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.3.3</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
              <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-<!--                <version>2.3.2</version>-->
+                <!--<version>3.0</version>-->
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <source>1.7</source>
++                   <target>1.7</target>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-<!--                 <version>2.3.2</version>-->
+<!--                 <version>3.4</version>-->
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
                         <archive>
                                 <manifest>
-                                        <mainClass>com.maventest.App</mainClass>
+                                       <addClasspath>true</addClasspath>
+                                        <mainClass>mainsrc.BBXYamlJava</mainClass>
                                 </manifest>
                         </archive>
                 </configuration>
