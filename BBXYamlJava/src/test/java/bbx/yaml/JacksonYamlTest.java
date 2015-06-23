@@ -49,5 +49,4 @@ public class JacksonYamlTest {
         SimpleClass simpleMapper = mapper.readValue(new File(file), SimpleClass.class);
         assertNotNull(simpleMapper.getSimpleString());
     }
-
 }
