@@ -15,8 +15,12 @@ public class BBXYamlJava {
     public static void main(String [] args){
         YamlInparse  inp=new YamlInparse();
         inp.updateFile();
-//        inp.parseAtom();
-        inp.parse();
+        inp.parseAtom();
         inp.listAllAssemblers();
+        
+        YamlOutparse out = new YamlOutparse("testparser");
+        out.setBBXInputPath("testvalue");
+        out.write();
+        
     }
 }

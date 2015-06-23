@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mainsrc.datatypes;
+package mainsrc.datatypes.applications;
 
 import java.util.ArrayList;
 
 /**
  *
- * @author jsteiner and mugarov
+ * @author mugarov
+ * Just a prototype of an Assembler using private fields.
  */
-public class Assembler extends Application{
+public class PrivateAssembler extends Application{
     private int id;
     
     private String name;
@@ -33,7 +34,7 @@ public class Assembler extends Application{
     private ArrayList<String> tasks;
     
     
-    public Assembler(int id){
+    public PrivateAssembler(int id){
         this.id = id;
         this. name = null;
         this. type = "assemblers";
@@ -43,8 +44,6 @@ public class Assembler extends Application{
         this.homepage = null;
         this.mailing_list = "not available";
         this.tasks = new <String>ArrayList();        
-        
-        
     }
 
     public int getId() {

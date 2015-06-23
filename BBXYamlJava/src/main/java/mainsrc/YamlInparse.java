@@ -21,13 +21,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import mainsrc.datatypes.Assembler;
+import mainsrc.datatypes.applications.PrivateAssembler;
 
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import mainsrc.datatypes.applications.Assembler;
 
 
 /**
@@ -54,14 +55,14 @@ public class YamlInparse {
     private String yamlString;
     private YAMLFactory factory;
     private JsonParser parser;
-    private ArrayList<Assembler> assemblers;
+    private ArrayList<PrivateAssembler> assemblers;
   
 
     
     
     public YamlInparse(){
         this.localPath = Constants.LOCAL_FILE_NAME;
-        this.assemblers = new <Assembler>ArrayList();
+        this.assemblers = new <PrivateAssembler>ArrayList();
        
     }
     
@@ -76,14 +77,14 @@ public class YamlInparse {
             int index = 0;
             String currentFieldName = null;
             String currentFieldValue = null;
-            Assembler assembler =null;
+            PrivateAssembler assembler =null;
                 while ((token = this.parser.nextToken()) != null) {
                     System.out.println(this.parser.getCurrentName() + " "+ this.parser.getValueAsString());
                     
                     if(this.parser.getCurrentName() != null & this.parser.getCurrentTokenId() != 2){
                         if (this.parser.getCurrentName().equals("image") && !currentFieldName.equals("image")){ //sometimes "image" is shown multiple times
                             index++;
-                            this.assemblers.add(new Assembler(index));
+                            this.assemblers.add(new PrivateAssembler(index));
                             System.out.println("    new Assembler with index "+index + " and currentFieldName " +currentFieldName );
                             
                         }
@@ -132,17 +133,16 @@ public class YamlInparse {
             byte[] encoded = Files.readAllBytes(Paths.get(this.localPath));
             this.yamlString = new String(encoded, StandardCharsets.UTF_8);
             ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-            Assembler ass = mapper.readValue(yamlString, mainsrc.datatypes.Assembler.class);
+            Assembler ass = mapper.readValue(yamlString, mainsrc.datatypes.applications.Assembler.class);
         } catch (IOException ex) {
             Logger.getLogger(YamlInparse.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
     public void listAllAssemblers(){
- 
         System.out.println("---");
-        System.out.println("asssemblers:");
-        for(Assembler a: assemblers){
+        System.out.println("assemblers:");
+        for(PrivateAssembler a: this.assemblers){
             System.out.println("-");
             System.out.println(a.getText());
         }
