@@ -6,72 +6,64 @@
 package mainsrc.datatypes.bioboxdatas;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
- * @author Mark
+ * @author Mark Ugarov
  */
 public class BBXArgument{
     
-    private String name;
-    private ArrayList <BBXDataField> datas;
-    private StringBuilder strB;
+//    version: "0.9.0"
+//    arguments:
+//     - fastq:
+//       - id: "testparser"
+//         type: "paired"
+//         value: "testvalue"
+//     - fragment_size:
+//       - id: ...
+//         value: ...
     
-    public BBXArgument(String id){
-        this.name = id;
-        this.datas = new <BBXDataField>ArrayList();
-        this.strB = new StringBuilder();
-    }
+    private FastqType fastq;
+    private FragmentSizeType fragmentSize;
     
-    public void addData(String name, String value){
-        this.datas.add(new BBXDataField(name, value));
-    }
-    
-    public void addData(BBXDataField field){
-        this.datas.add(field);
-    }
-    
-    /**
-     * Generates a substring for this argument.
-     * @return the .yaml-compatible substring for this argument
-     */
-    public String getString(){
-        this.strB = new StringBuilder();
-        String n = System.getProperty("line.separator");
-        this.strB.append(" - ");
-        this.strB.append(this.getName());
-        this.strB.append(":");
-        this.strB.append(n);
-        this.strB.append("   - ");
-        for (BBXDataField b: this.datas){
-            this.strB.append(b.getString());
-            this.strB.append(n);
-            this.strB.append("     ");
+    private List<AbstractType> list;
+
+    public List<AbstractType> getList() {
+        this.list = new ArrayList<AbstractType>();
+        if(this.getFastq() != null){
+            this.list.add(this.getFastq());
         }
-        return this.strB.toString();
+        if(this.getFragmentSize() != null){
+            this.list.add(this.getFragmentSize());
+        }
+        return list;
     }
 
-    /**
-     * @return name of the argument
-     */
-    public String getName() {
-        return name;
+    public void setList(List<AbstractType> list) {
+        this.setFastq((FastqType) list.get(0));
+        if(list.size() > 1 ){
+            this.setFragmentSize((FragmentSizeType) list.get(1));
+        }
+        this.list = list;
     }
 
-    public ArrayList <BBXDataField> getDatas() {
-        return datas;
+    public FastqType getFastq() {
+        return fastq;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFastq(FastqType fastq) {
+        this.fastq = fastq;
     }
 
-    public void setDatas(ArrayList <BBXDataField> datas) {
-        this.datas = datas;
+    public FragmentSizeType getFragmentSize() {
+        return fragmentSize;
+    }
+
+    public void setFragmentSize(FragmentSizeType fragmentSize) {
+        this.fragmentSize = fragmentSize;
     }
     
-    public void clear(){
-        this.datas = new <BBXDataField>ArrayList();
-    }
+    
     
 }

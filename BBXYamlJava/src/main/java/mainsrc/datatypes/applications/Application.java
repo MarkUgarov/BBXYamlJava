@@ -6,6 +6,7 @@
 package mainsrc.datatypes.applications;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 
 /**
  *
@@ -14,13 +15,13 @@ import java.util.LinkedHashMap;
  */
 public class Application {
     
-    private LinkedHashMap assemblers;
+    private List<Assembler> assemblers;
 
-    public LinkedHashMap getAssemblers() {
+    public List<Assembler> getAssemblers() {
         return assemblers;
     }
 
-    public void setAssemblers(LinkedHashMap assemblers) {
+    public void setAssemblers(List<Assembler> assemblers) {
         this.assemblers = assemblers;
     }
    

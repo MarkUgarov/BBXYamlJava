@@ -31,9 +31,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
+import java.util.List;
 import mainsrc.datatypes.applications.Application;
 import mainsrc.datatypes.applications.Assembler;
-import org.junit.rules.TemporaryFolder;
 
 
 /**
@@ -61,88 +61,20 @@ public class YamlInparse {
     private YAMLFactory factory;
     private JsonParser parser;
     private ArrayList<PrivateAssembler> privateAssemblers;
-    private List assembler;
-
-  
-
-    
+    private List<Assembler> assembler;
     
     public YamlInparse(){
         this.localPath = Constants.LOCAL_FILE_NAME;
         this.privateAssemblers = new <PrivateAssembler>ArrayList();
-        this.assembler = new LinkedHashMap();
+        this.assembler = new ArrayList<Assembler>();
         this.yamlString = null;
        
-    }
-    
-    public void parseAtom(){
-        try {
-            if(this.yamlString== null){
-                byte[] encoded = Files.readAllBytes(Paths.get(this.localPath));
-                this.yamlString = new String(encoded, StandardCharsets.UTF_8);
-            }
-            this.factory = new YAMLFactory();
-            this.parser = factory.createParser(this.yamlString); // don't be fooled by method name...
-            JsonToken token;
-            int index = 0;
-            String currentFieldName = null;
-            String currentFieldValue = null;
-            PrivateAssembler assembler =null;
-                while ((token = this.parser.nextToken()) != null) {
-                    System.out.println(this.parser.getCurrentName() + " "+ this.parser.getValueAsString());
-                    
-                    if(this.parser.getCurrentName() != null & this.parser.getCurrentTokenId() != 2){
-                        if (this.parser.getCurrentName().equals("image") && !currentFieldName.equals("image")){ //sometimes "image" is shown multiple times
-                            index++;
-                            this.privateAssemblers.add(new PrivateAssembler(index));
-                            System.out.println("    new Assembler with index "+index + " and currentFieldName " +currentFieldName );
-                            
-                        }
-                        currentFieldName =this.parser.getCurrentName();
-                    }
-                    currentFieldValue = this.parser.getValueAsString();
-                    if(currentFieldValue!= null){
-                        if(currentFieldName.equals("dockerhub")){
-                             this.privateAssemblers.get(index-1).setName(currentFieldValue);
-                        }
-                        else if(currentFieldName.equals("repo")){
-                            this.privateAssemblers.get(index-1).setRepository(currentFieldValue);
-                        }
-                        else if(currentFieldName.equals("source")){
-                            this.privateAssemblers.get(index-1).setSource(currentFieldValue);
-                        }
-                        else if(currentFieldName.equals("pmid")){
-                            this.privateAssemblers.get(index-1).setPmid(currentFieldValue);
-                        }
-                        else if(currentFieldName.equals("homepage")){
-                            this.privateAssemblers.get(index-1).setHomepage(currentFieldValue);
-                        }
-                        else if(currentFieldName.equals("mailing_list")){
-                            this.privateAssemblers.get(index-1).setMailing_list(currentFieldValue);
-                        }
-                        else if(currentFieldName.equals("description")){
-                            this.privateAssemblers.get(index-1).setDescription(currentFieldValue);
-                        }
-                        else if(currentFieldName.equals("tasks")){
-                            this.privateAssemblers.get(index-1).addTasks(currentFieldValue);
-                        }
-                        
-                    }   
-                }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(YamlInparse.class.getName()).log(Level.SEVERE, null, ex);
-        }catch (IOException ex) {
-                Logger.getLogger(YamlInparse.class.getName()).log(Level.SEVERE, null, ex);
-        }
-//        
-        
     }
     
     public void parse(){ 
         try {
             if(this.yamlString== null){
-                byte[] encoded = Files.readAllBytes(Paths.get(this.localPath));
-                this.yamlString = new String(encoded, Charset.defaultCharset());
+                this.readFile();
                 if(this.yamlString.length()==0){
                     this.updateFile();
                 }
@@ -158,11 +90,38 @@ public class YamlInparse {
     public void listAllAssemblers(){
         System.out.println("---");
         System.out.println("assemblers:");
-        this.assembler.toString();
+        for(Assembler ass:this.assembler){
+            System.out.println(this.getAssemblerString(ass));
+        }
+
     }
     
+    /**
+     * The standard method to set the input.
+     * @param inp is a String with the content of the input. 
+     */
+    public void setYamlString(String inp){
+        this.yamlString = inp;
+    }
+    /**
+     * If you want to read out from a file, you can set the path here.
+     * Don't forget to use the right slash depending on your filsystem and 
+     * reread the file via the read() - method.
+     * @param path is a String - please make sure you 
+     */
     public void setlocalPath(String path){
         this.localPath = path;
+    }
+    
+    public void readFile(){
+         byte[] encoded;
+        try {
+            encoded = Files.readAllBytes(Paths.get(this.localPath));
+            this.yamlString = new String(encoded, Charset.defaultCharset());
+        } catch (IOException ex) {
+            Logger.getLogger(YamlInparse.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
     }
     
     public void updateFile(){
@@ -219,6 +178,7 @@ public class YamlInparse {
                 "   pmid: "+ass.getPmid() +n+
                 "   homepage: "+ ass.getHomepage() + n+
                 "   description:" + ass.getDescription() +n+
+                "   mailing list: "+ass.getMailing_list()+n+
                 "   tasks: " +n + ass.getTasks().toString()
         );
     }

@@ -16,10 +16,10 @@ public class BBXYamlJava {
         YamlInparse  inp=new YamlInparse();
         inp.updateFile();
         inp.parse();
-        inp.listAllAssemblers();
+        //inp.listAllAssemblers();
         
-        YamlOutparse out = new YamlOutparse("testparser");
-        out.setBBXInputPath("testvalue");
+        YamlOutparse out = new YamlOutparse();
+        out.generateTest();
         out.write();
         
     }

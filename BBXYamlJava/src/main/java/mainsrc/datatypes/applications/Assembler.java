@@ -5,15 +5,13 @@
  */
 package mainsrc.datatypes.applications;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import java.util.LinkedHashMap;
+import java.util.List;
 
 /**
  *
  * @author Mark
  */
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="image")
+
 public class Assembler extends Application{
     
     private ImageType image;
@@ -21,7 +19,8 @@ public class Assembler extends Application{
     private String pmid;
     private String homepage;
     private String description;
-    private LinkedHashMap tasks; 
+    private List<String> tasks; 
+    private String mailing_list;
 
     public ImageType getImage() {
         return image;
@@ -55,12 +54,26 @@ public class Assembler extends Application{
         this.description = description;
     }
 
-    public LinkedHashMap getTasks() {
+    public List<String> getTasks() {
         return tasks;
     }
 
-    public void setTasks(LinkedHashMap tasks) {
+    public void setTasks(List<String> tasks) {
         this.tasks = tasks;
+    }
+
+    /**
+     * @return the mailing_list
+     */
+    public String getMailing_list() {
+        return mailing_list;
+    }
+
+    /**
+     * @param mailing_list the mailing_list to set
+     */
+    public void setMailing_list(String mailing_list) {
+        this.mailing_list = mailing_list;
     }
     
     

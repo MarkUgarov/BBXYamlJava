@@ -12,7 +12,6 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
  *
  * @author Mark
  */
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="dockerhub")
 public class ImageType {
 
     private String dockerhub;
