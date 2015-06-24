@@ -15,11 +15,32 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="dockerhub")
 public class ImageType {
 
-    public String dockerhub;
-    public String repo;
-    public String source;
-    public ImageType(String dh){
-        this.dockerhub = dh;
+    private String dockerhub;
+    private String repo;
+    private String source;
+
+    public String getDockerhub() {
+        return dockerhub;
+    }
+
+    public String getRepo() {
+        return repo;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setDockerhub(String dockerhub) {
+        this.dockerhub = dockerhub;
+    }
+
+    public void setRepo(String repo) {
+        this.repo = repo;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
     
 }

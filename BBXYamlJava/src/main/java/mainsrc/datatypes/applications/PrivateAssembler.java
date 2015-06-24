@@ -36,8 +36,8 @@ public class PrivateAssembler extends Application{
     
     public PrivateAssembler(int id){
         this.id = id;
-        this. name = null;
-        this. type = "assemblers";
+        this.name = null;
+        this.type = "assemblers";
         this.description = null;
         this.repository = null;
         this.source = "unkonw";
@@ -45,6 +45,7 @@ public class PrivateAssembler extends Application{
         this.mailing_list = "not available";
         this.tasks = new <String>ArrayList();        
     }
+    
 
     public int getId() {
         return id;

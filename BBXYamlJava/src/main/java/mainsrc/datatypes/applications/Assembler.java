@@ -7,6 +7,7 @@ package mainsrc.datatypes.applications;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import java.util.LinkedHashMap;
 
 /**
  *
@@ -15,14 +16,53 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="image")
 public class Assembler extends Application{
     
-    public ImageType image;
+    private ImageType image;
         
-    public String pmid;
-    public String homepage;
-    public String description;
-    
-    public Assembler(ImageType img){
-        this.image = img;
+    private String pmid;
+    private String homepage;
+    private String description;
+    private LinkedHashMap tasks; 
+
+    public ImageType getImage() {
+        return image;
     }
+
+    public String getPmid() {
+        return pmid;
+    }
+
+    public String getHomepage() {
+        return homepage;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setImage(ImageType image) {
+        this.image = image;
+    }
+
+    public void setPmid(String pmid) {
+        this.pmid = pmid;
+    }
+
+    public void setHomepage(String homepage) {
+        this.homepage = homepage;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LinkedHashMap getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(LinkedHashMap tasks) {
+        this.tasks = tasks;
+    }
+    
+    
     
 }

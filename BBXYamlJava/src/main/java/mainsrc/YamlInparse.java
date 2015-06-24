@@ -24,11 +24,16 @@ import java.util.logging.Logger;
 import mainsrc.datatypes.applications.PrivateAssembler;
 
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedHashMap;
+import mainsrc.datatypes.applications.Application;
 import mainsrc.datatypes.applications.Assembler;
+import org.junit.rules.TemporaryFolder;
 
 
 /**
@@ -55,22 +60,27 @@ public class YamlInparse {
     private String yamlString;
     private YAMLFactory factory;
     private JsonParser parser;
-    private ArrayList<PrivateAssembler> assemblers;
+    private ArrayList<PrivateAssembler> privateAssemblers;
+    private List assembler;
+
   
 
     
     
     public YamlInparse(){
         this.localPath = Constants.LOCAL_FILE_NAME;
-        this.assemblers = new <PrivateAssembler>ArrayList();
+        this.privateAssemblers = new <PrivateAssembler>ArrayList();
+        this.assembler = new LinkedHashMap();
+        this.yamlString = null;
        
     }
     
     public void parseAtom(){
         try {
-            byte[] encoded = Files.readAllBytes(Paths.get(this.localPath));
-            this.yamlString = new String(encoded, StandardCharsets.UTF_8);
-            
+            if(this.yamlString== null){
+                byte[] encoded = Files.readAllBytes(Paths.get(this.localPath));
+                this.yamlString = new String(encoded, StandardCharsets.UTF_8);
+            }
             this.factory = new YAMLFactory();
             this.parser = factory.createParser(this.yamlString); // don't be fooled by method name...
             JsonToken token;
@@ -84,7 +94,7 @@ public class YamlInparse {
                     if(this.parser.getCurrentName() != null & this.parser.getCurrentTokenId() != 2){
                         if (this.parser.getCurrentName().equals("image") && !currentFieldName.equals("image")){ //sometimes "image" is shown multiple times
                             index++;
-                            this.assemblers.add(new PrivateAssembler(index));
+                            this.privateAssemblers.add(new PrivateAssembler(index));
                             System.out.println("    new Assembler with index "+index + " and currentFieldName " +currentFieldName );
                             
                         }
@@ -93,28 +103,28 @@ public class YamlInparse {
                     currentFieldValue = this.parser.getValueAsString();
                     if(currentFieldValue!= null){
                         if(currentFieldName.equals("dockerhub")){
-                             this.assemblers.get(index-1).setName(currentFieldValue);
+                             this.privateAssemblers.get(index-1).setName(currentFieldValue);
                         }
                         else if(currentFieldName.equals("repo")){
-                            this.assemblers.get(index-1).setRepository(currentFieldValue);
+                            this.privateAssemblers.get(index-1).setRepository(currentFieldValue);
                         }
                         else if(currentFieldName.equals("source")){
-                            this.assemblers.get(index-1).setSource(currentFieldValue);
+                            this.privateAssemblers.get(index-1).setSource(currentFieldValue);
                         }
                         else if(currentFieldName.equals("pmid")){
-                            this.assemblers.get(index-1).setPmid(currentFieldValue);
+                            this.privateAssemblers.get(index-1).setPmid(currentFieldValue);
                         }
                         else if(currentFieldName.equals("homepage")){
-                            this.assemblers.get(index-1).setHomepage(currentFieldValue);
+                            this.privateAssemblers.get(index-1).setHomepage(currentFieldValue);
                         }
                         else if(currentFieldName.equals("mailing_list")){
-                            this.assemblers.get(index-1).setMailing_list(currentFieldValue);
+                            this.privateAssemblers.get(index-1).setMailing_list(currentFieldValue);
                         }
                         else if(currentFieldName.equals("description")){
-                            this.assemblers.get(index-1).setDescription(currentFieldValue);
+                            this.privateAssemblers.get(index-1).setDescription(currentFieldValue);
                         }
                         else if(currentFieldName.equals("tasks")){
-                            this.assemblers.get(index-1).addTasks(currentFieldValue);
+                            this.privateAssemblers.get(index-1).addTasks(currentFieldValue);
                         }
                         
                     }   
@@ -128,12 +138,18 @@ public class YamlInparse {
         
     }
     
-    public void parse(){
+    public void parse(){ 
         try {
-            byte[] encoded = Files.readAllBytes(Paths.get(this.localPath));
-            this.yamlString = new String(encoded, StandardCharsets.UTF_8);
+            if(this.yamlString== null){
+                byte[] encoded = Files.readAllBytes(Paths.get(this.localPath));
+                this.yamlString = new String(encoded, Charset.defaultCharset());
+                if(this.yamlString.length()==0){
+                    this.updateFile();
+                }
+            }
             ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-            Assembler ass = mapper.readValue(yamlString, mainsrc.datatypes.applications.Assembler.class);
+            Application app = mapper.readValue(yamlString, mainsrc.datatypes.applications.Application.class);
+            this.assembler = app.getAssemblers();
         } catch (IOException ex) {
             Logger.getLogger(YamlInparse.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -142,10 +158,7 @@ public class YamlInparse {
     public void listAllAssemblers(){
         System.out.println("---");
         System.out.println("assemblers:");
-        for(PrivateAssembler a: this.assemblers){
-            System.out.println("-");
-            System.out.println(a.getText());
-        }
+        this.assembler.toString();
     }
     
     public void setlocalPath(String path){
@@ -169,6 +182,7 @@ public class YamlInparse {
                 Logger.getLogger(YamlInparse.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        this.localPath = this.localFile.getAbsolutePath();
         
         // reading and writing
         this.bsb = new StringBuilder();
@@ -179,18 +193,34 @@ public class YamlInparse {
             this.in = new BufferedReader(new InputStreamReader(this.inStream));
             this.writer = new FileWriter(this.localFile, false);
             while ((line = this.in.readLine()) != null) {
-                bsb.append(line);
-                bsb.append(System.getProperty("line.separator"));
+                this.bsb.append(line);
+                this.bsb.append(System.getProperty("line.separator"));
             }
-            this.writer.write(this.bsb.toString());
+            this.yamlString = this.bsb.toString();
+            this.writer.write(this.yamlString);
             this.in.close();
             this.writer.close();
-           
+            
             
         } catch (IOException ex) {
             Logger.getLogger(YamlInparse.class.getName()).log(Level.SEVERE, null, ex);
         } 
 //        System.out.println("DONE - Path is "+this.localFile.toPath());
+    }
+    
+    private String getAssemblerString(Assembler ass){
+        String n = System.getProperty("line.separator");
+        StringBuilder taskLister = new StringBuilder();
+        return new String(
+                "   image:"+n+
+                "       dockerhub: " +ass.getImage().getDockerhub() +n+
+                "       repo: " + ass.getImage().getRepo() +n+
+                "       source: "+ ass.getImage().getSource() + n+ 
+                "   pmid: "+ass.getPmid() +n+
+                "   homepage: "+ ass.getHomepage() + n+
+                "   description:" + ass.getDescription() +n+
+                "   tasks: " +n + ass.getTasks().toString()
+        );
     }
     
 }

@@ -5,12 +5,24 @@
  */
 package mainsrc.datatypes.applications;
 
+import java.util.LinkedHashMap;
+
 /**
  *
  * @author Mark
  * Representation of an Application. 
  */
-public abstract class Application {
+public class Application {
+    
+    private LinkedHashMap assemblers;
+
+    public LinkedHashMap getAssemblers() {
+        return assemblers;
+    }
+
+    public void setAssemblers(LinkedHashMap assemblers) {
+        this.assemblers = assemblers;
+    }
    
     
 }
