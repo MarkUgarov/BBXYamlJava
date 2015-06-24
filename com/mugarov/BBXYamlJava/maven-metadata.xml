@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.mugarov</groupId>
+  <artifactId>BBXYamlJava</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <versioning>
+    <versions>
+      <version>1.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20150624163014</lastUpdated>
+  </versioning>
+</metadata>
