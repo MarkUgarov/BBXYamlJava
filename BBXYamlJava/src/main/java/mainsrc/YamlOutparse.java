@@ -32,54 +32,42 @@ public class YamlOutparse {
     private TopType toptype;
     
     public YamlOutparse(){ 
-        this.outputPath =Constants.BBX_FILE_NAME;
+        this.outputPath = Constants.BBX_FILE_NAME;
     }
-
-    
-    public void generateTest(){
-        this.toptype = new TopType();
-        FastqType fq = new FastqType();
-        List<DataFormat> dfList1= new ArrayList<>();
-        DataFormat df1 = new DataFormat(); 
-        df1.setId("testID1");
-        df1.setType("testType1");
-        df1.setValue("testValue1");
-        dfList1.add(df1);
-        fq.setFastq(dfList1);
-        FragmentSizeType fs = new FragmentSizeType();
-        List<DataFormat> dfList2= new ArrayList<>();
-        DataFormat df2 = new DataFormat(); 
-        df2.setId("testID2");
-        df2.setValue("testValue2");
-        dfList2.add(df2);
-        fs.setFragment_size(dfList2);
-        ArrayList<AbstractType> args = new ArrayList<>();
-        args.add(fq);
-        args.add(fs);
-        this.toptype.setArguments(args);
-        this.toptype.setVersion("0.9.0");
-    }
-    
 
     public void write(){
         File localFile = new File(this.outputPath);
-        if (!localFile.exists()) {
-            try {
+       
+        try {
+            if (!localFile.exists()) {
                 localFile.createNewFile();
-                this.outputPath = localFile.getAbsolutePath();
-        
-                YAMLFactory factory = new YAMLFactory();
-                ObjectMapper yamlmap = new ObjectMapper(factory);
-                FileOutputStream fos = new FileOutputStream(localFile);
-
-                factory.createGenerator(fos).writeObject(this.toptype);
-            } catch (IOException ex) {
-                Logger.getLogger(YamlInparse.class.getName()).log(Level.SEVERE, null, ex);
             }
+            this.setOutputPath(localFile.getAbsolutePath());
+
+            YAMLFactory factory = new YAMLFactory();
+            ObjectMapper yamlmap = new ObjectMapper(factory);
+            FileOutputStream fos = new FileOutputStream(localFile);
+
+            factory.createGenerator(fos).writeObject(this.getToptype());
+        } catch (IOException ex) {
+            Logger.getLogger(YamlInparse.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
 
-    
-    
+    public TopType getToptype() {
+        return toptype;
+    }
+
+    public void setToptype(TopType toptype) {
+        this.toptype = toptype;
+    }
+
+    public String getOutputPath() {
+        return outputPath;
+    }
+
+    public void setOutputPath(String outputPath) {
+        this.outputPath = outputPath;
+    }
+   
 }

@@ -13,14 +13,21 @@ package mainsrc;
 public class BBXYamlJava {
     
     public static void main(String [] args){
-        YamlInparse  inp=new YamlInparse();
-        inp.updateFile();
-        inp.parse();
-        inp.listAllAssemblers();
-        
-        YamlOutparse out = new YamlOutparse();
-        out.generateTest();
-        out.write();
-        
+            // do nothing
+    }
+    
+    /**
+     * 
+     * @return A new instance of YamlInparse.
+     */
+    public YamlInparse getNewYamlInparser(){
+        return new YamlInparse();
+    }
+    
+    /**
+     * @return A new instance of the YamlOutparse.
+     */
+    public YamlOutparse getNewYamlOutparser(){
+        return new YamlOutparse();
     }
 }
