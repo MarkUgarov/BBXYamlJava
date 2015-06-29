@@ -6,13 +6,9 @@
 package mainsrc;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,16 +17,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import mainsrc.datatypes.applications.PrivateAssembler;
 
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedHashMap;
 import java.util.List;
 import mainsrc.datatypes.applications.Application;
 import mainsrc.datatypes.applications.Assembler;
@@ -50,6 +42,7 @@ public class YamlInparse {
     private String localPath;
     
     // for updates
+    private String webURLString;
     private InputStream inStream;
     private StringBuilder bsb;
     private BufferedReader in;
@@ -60,15 +53,13 @@ public class YamlInparse {
     private String yamlString;
     private YAMLFactory factory;
     private JsonParser parser;
-    private ArrayList<PrivateAssembler> privateAssemblers;
-    private List<Assembler> assembler;
+    private List<Assembler> assemblers;
     
     public YamlInparse(){
         this.localPath = Constants.LOCAL_FILE_NAME;
-        this.privateAssemblers = new <PrivateAssembler>ArrayList();
-        this.assembler = new ArrayList<Assembler>();
+        this.assemblers = new ArrayList<Assembler>();
         this.yamlString = null;
-       
+        this.webURLString = Constants.INPUT_FILE_URL;
     }
     
     public void parse(){ 
@@ -81,7 +72,7 @@ public class YamlInparse {
             }
             ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
             Application app = mapper.readValue(yamlString, mainsrc.datatypes.applications.Application.class);
-            this.assembler = app.getAssemblers();
+            this.setAssembler(app.getAssemblers());
         } catch (IOException ex) {
             Logger.getLogger(YamlInparse.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -90,7 +81,7 @@ public class YamlInparse {
     public void listAllAssemblers(){
         System.out.println("---");
         System.out.println("assemblers:");
-        for(Assembler ass:this.assembler){
+        for(Assembler ass:this.assemblers){
             System.out.println(this.getAssemblerString(ass));
         }
 
@@ -113,6 +104,10 @@ public class YamlInparse {
         this.localPath = path;
     }
     
+    public String getlocalPath(){
+        return this.localPath;
+    }
+    
     public void readFile(){
          byte[] encoded;
         try {
@@ -125,10 +120,9 @@ public class YamlInparse {
     }
     
     public void updateFile(){
-        
         //adjusting the input and ouput
         try {
-            this.url = new URL(Constants.INPUT_FILE_URL);
+            this.url = new URL(this.getWebURLString());
         } catch (MalformedURLException ex) {
             Logger.getLogger(YamlInparse.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -181,6 +175,22 @@ public class YamlInparse {
                 "   mailing list: "+ass.getMailing_list()+n+
                 "   tasks: " +n + ass.getTasks().toString()
         );
+    }
+
+    public String getWebURLString() {
+        return webURLString;
+    }
+
+    public void setWebURLString(String webURLString) {
+        this.webURLString = webURLString;
+    }
+
+    public List<Assembler> getAssemblers() {
+        return assemblers;
+    }
+
+    public void setAssembler(List<Assembler> assembler) {
+        this.assemblers = assembler;
     }
     
 }

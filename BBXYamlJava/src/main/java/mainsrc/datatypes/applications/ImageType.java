@@ -11,6 +11,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 /**
  *
  * @author Mark
+ * 
+ * 
  */
 public class ImageType {
 

@@ -14,16 +14,6 @@ import java.util.List;
  */
 public class BBXArgument{
     
-//    version: "0.9.0"
-//    arguments:
-//     - fastq:
-//       - id: "testparser"
-//         type: "paired"
-//         value: "testvalue"
-//     - fragment_size:
-//       - id: ...
-//         value: ...
-    
     private FastqType fastq;
     private FragmentSizeType fragmentSize;
     
