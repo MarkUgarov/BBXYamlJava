@@ -11,9 +11,9 @@ import java.util.List;
 /**
  *
  * @author Mark
- * Representation of an Application. 
+ Representation of the Applications. 
  */
-public class Application {
+public class Applications {
     
     private List<Assembler> assemblers;
 

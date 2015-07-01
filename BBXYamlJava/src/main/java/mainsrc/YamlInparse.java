@@ -24,8 +24,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import mainsrc.datatypes.applications.Application;
+import mainsrc.datatypes.applications.ApplicationFlattener;
+import mainsrc.datatypes.applications.Applications;
 import mainsrc.datatypes.applications.Assembler;
+import mainsrc.datatypes.applications.FlatAssembler;
 
 
 /**
@@ -53,10 +55,12 @@ public class YamlInparse {
     private String yamlString;
     private YAMLFactory factory;
     private JsonParser parser;
+    private Applications app;
     private List<Assembler> assemblers;
     
     public YamlInparse(){
         this.localPath = Constants.LOCAL_FILE_NAME;
+        this.app = null;
         this.assemblers = new ArrayList<Assembler>();
         this.yamlString = null;
         this.webURLString = Constants.INPUT_FILE_URL;
@@ -71,7 +75,7 @@ public class YamlInparse {
                 }
             }
             ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-            Application app = mapper.readValue(yamlString, mainsrc.datatypes.applications.Application.class);
+            app = mapper.readValue(yamlString, mainsrc.datatypes.applications.Applications.class);
             this.setAssembler(app.getAssemblers());
         } catch (IOException ex) {
             Logger.getLogger(YamlInparse.class.getName()).log(Level.SEVERE, null, ex);
@@ -191,6 +195,17 @@ public class YamlInparse {
 
     public void setAssembler(List<Assembler> assembler) {
         this.assemblers = assembler;
+    }
+    
+    public ArrayList<FlatAssembler> getFlatAssemblers(){
+        if(this.app == null){
+            return null;
+        }
+        else{
+            ApplicationFlattener appFlat = new ApplicationFlattener(this.app);
+            return appFlat.getAssemblers();
+        }
+        
     }
     
 }

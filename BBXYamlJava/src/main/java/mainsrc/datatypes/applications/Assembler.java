@@ -12,7 +12,7 @@ import java.util.List;
  * @author Mark
  */
 
-public class Assembler extends Application{
+public class Assembler extends Applications{
     
     private ImageType image;
         
