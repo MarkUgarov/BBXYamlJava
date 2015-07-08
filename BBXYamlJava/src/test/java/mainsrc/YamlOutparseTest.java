@@ -5,6 +5,7 @@
  */
 package mainsrc;
 
+import yamlparse.YamlOutparse;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -14,11 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import mainsrc.datatypes.bioboxdatas.AbstractType;
-import mainsrc.datatypes.bioboxdatas.DataFormat;
-import mainsrc.datatypes.bioboxdatas.FastqType;
-import mainsrc.datatypes.bioboxdatas.FragmentSizeType;
-import mainsrc.datatypes.bioboxdatas.TopType;
+import yamlparse.datatypes.bioboxdatas.AbstractType;
+import yamlparse.datatypes.bioboxdatas.DataFormat;
+import yamlparse.datatypes.bioboxdatas.FastqType;
+import yamlparse.datatypes.bioboxdatas.FragmentSizeType;
+import yamlparse.datatypes.bioboxdatas.TopType;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

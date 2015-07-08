@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mainsrc;
+package yamlparse;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,10 +24,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import mainsrc.datatypes.applications.ApplicationFlattener;
-import mainsrc.datatypes.applications.Applications;
-import mainsrc.datatypes.applications.Assembler;
-import mainsrc.datatypes.applications.FlatAssembler;
+import yamlparse.datatypes.applications.ApplicationFlattener;
+import yamlparse.datatypes.applications.Applications;
+import yamlparse.datatypes.applications.Assembler;
+import yamlparse.datatypes.applications.FlatAssembler;
 
 
 /**
@@ -75,7 +75,7 @@ public class YamlInparse {
                 }
             }
             ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-            app = mapper.readValue(yamlString, mainsrc.datatypes.applications.Applications.class);
+            app = mapper.readValue(yamlString, yamlparse.datatypes.applications.Applications.class);
             this.setAssembler(app.getAssemblers());
         } catch (IOException ex) {
             Logger.getLogger(YamlInparse.class.getName()).log(Level.SEVERE, null, ex);

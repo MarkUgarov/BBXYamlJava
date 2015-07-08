@@ -15,4 +15,4 @@
         |ImageType|
  *          
  */
-package mainsrc.datatypes.applications;
+package yamlparse.datatypes.applications;

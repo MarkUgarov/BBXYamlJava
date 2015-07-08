@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mainsrc.datatypes.applications;
+package yamlparse.datatypes.applications;
 
 import java.util.ArrayList;
 import java.util.Arrays;

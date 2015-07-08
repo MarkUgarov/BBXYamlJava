@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mainsrc;
+package yamlparse;
 
 import java.net.URL;
 import java.nio.file.Path;
