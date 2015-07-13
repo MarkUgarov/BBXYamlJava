@@ -18,6 +18,7 @@ to the <repositories>-section. Also add
 to the <dependencies>- section. 
 
 Step 2: How to use.
+
 For practical examples: See JUnit-Tests in this package. 
 You will need to import import yamlparse.BBXYamlJava first, then make an instance out of this class. 
 For parsing .yaml-formated files into the abstract dataformat get a new instance of yamlparse.YamlInparse  by using #BBXYamlJava.getNewYamlInparser(),
