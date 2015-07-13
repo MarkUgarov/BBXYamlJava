@@ -35,8 +35,13 @@ ___
 #How to host your own Maven-Repository on github:
 
 There are two ways for this: 
+
 1. Look at http://stackoverflow.com/questions/14013644/hosting-a-maven-repository-on-github
-2. Similar to that just integrate 
+
+2. Similar to that 
+
+ - first integrate
+
 ~~~XML
 <distributionManagement>
     <repository>
@@ -68,10 +73,10 @@ into your .pom- file. Also do not forget to add your groupId and the version. It
       ...
 ~~~
 
-Use mvn clean deploy (or just click "Clean and Build Project" in netbeans). 
-Make a directory like #projectPath/hostdata you want to use for hosting (lets say it's the $HOST now). 
-Then go to #projectPath/target/mvn-repo. There should be a directory structure underneath describing your groupId. Go deeper into that until you reach the maven-metadata - files. Copy all the files and directories in this directory into $HOST by using the replace-option.
-If this is not your first version: Go back to $HOST and edit the maven-metadata.xml - file by adding all versionnumbers you shared in your $HOST in the <versioning> - section. 
+- Use mvn clean deploy (or just click "Clean and Build Project" in netbeans). 
+- Make a directory like #projectPath/hostdata you want to use for hosting (lets say it's the $HOST now). 
+- Then go to #projectPath/target/mvn-repo. There should be a directory structure underneath describing your groupId. Go deeper into that until you reach the maven-metadata - files. Copy all the files and directories in this directory into $HOST by using the replace-option.
+- If this is not your first version: Go back to $HOST and edit the maven-metadata.xml - file by adding all versionnumbers you shared in your $HOST in the <versioning> - section. 
 It could look like this if you also had an release:
 ~~~XML
 <?xml version="1.0" encoding="UTF-8"?>
@@ -92,7 +97,7 @@ It could look like this if you also had an release:
 </metadata>
 ~~~
 
-Now every other user can integrate your project like i described before. 
+- Now every other user can integrate your project like i described before. 
 
 I hope I could help to make programming easier for you. 
 
