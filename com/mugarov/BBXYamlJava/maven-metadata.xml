@@ -2,11 +2,11 @@
 <metadata>
   <groupId>com.mugarov</groupId>
   <artifactId>BBXYamlJava</artifactId>
-  <version>1.0-SNAPSHOT</version>
   <versioning>
     <versions>
-      <version>1.0-SNAPSHOT</version>
+	  <version>1.0-SNAPSHOT</version>
+      <version>v0.1.0</version>
     </versions>
-    <lastUpdated>20150624163014</lastUpdated>
+    <lastUpdated>20150713124510</lastUpdated>
   </versioning>
 </metadata>
