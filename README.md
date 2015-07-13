@@ -82,7 +82,7 @@ It could look like this if you also had an release:
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
   <groupId>com.myName</groupId>
-  <artifactId>BBXYamlJava</artifactId>
+  <artifactId>ProjectName</artifactId>
   <versioning>
     <release>0.1.5</release> 
     <versions>
