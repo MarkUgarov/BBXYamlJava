@@ -16,13 +16,13 @@ Go into your .pom - file and add
 to the repositories-section. Also add
 ~~~XML
 <dependency>
-    <groupId>com.mugarov <</groupId>
+    <groupId>com.mugarov </groupId>
     <artifactId>BBXYamlJava</artifactId>
     <version>v0.1.0</version>
     <type>jar</type>
 </dependency>
 ~~~
-to the dependencies- section. 
+to the dependencies- section. Please check if there is a better version for you than v0.1.0 and just put its name in the version- element. 
 
 ## Step 2: How to use.
 
@@ -97,7 +97,22 @@ It could look like this if you also had an release:
 </metadata>
 ~~~
 
-- Now every other user can integrate your project like i described before. 
+- Upload the $HOST into github to any branch. Now every other user can integrate your project like i described before.  They have to add
+ ~~~XML
+ <repository>
+    <id>anyID</id>
+    <url>https:/github.org/YOUR_ACCOUNT_NAME/YOUR_REPOSITORY_NAME/raw/YOUR_BRANCH_NAME</url>
+</repository>
+~~~
+to the repositories-section. The addition in the Dependencies could look like this:
+~~~XML
+<dependency>
+    <groupId>com.myName</groupId>
+    <artifactId>ProjectName</artifactId>
+    <version>v0.1.5</version>
+    <type>jar</type>
+</dependency>
+~~~
 
 I hope I could help to make programming easier for you. 
 
