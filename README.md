@@ -98,12 +98,14 @@ It could look like this if you also had an release:
 ~~~
 
 - Upload the $HOST into github to any branch. Now every other user can integrate your project like i described before.  They have to add
+
  ~~~XML
  <repository>
     <id>anyID</id>
     <url>https:/github.org/YOUR_ACCOUNT_NAME/YOUR_REPOSITORY_NAME/raw/YOUR_BRANCH_NAME</url>
 </repository>
 ~~~
+
 to the repositories-section. The addition in the Dependencies could look like this:
 ~~~XML
 <dependency>
