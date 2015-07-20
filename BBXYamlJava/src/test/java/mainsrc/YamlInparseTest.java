@@ -5,6 +5,8 @@
  */
 package mainsrc;
 
+import yamlparse.YamlInparse;
+import yamlparse.Constants;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -12,8 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import mainsrc.datatypes.applications.Assembler;
-import mainsrc.datatypes.applications.ImageType;
+import yamlparse.datatypes.applications.Assembler;
+import yamlparse.datatypes.applications.ImageType;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

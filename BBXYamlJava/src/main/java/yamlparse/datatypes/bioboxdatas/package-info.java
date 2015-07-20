@@ -21,4 +21,4 @@
  *         _____|______             _____|______
  *         |DataFormat|             |DataFormat|
  */
-package mainsrc.datatypes.bioboxdatas;
+package yamlparse.datatypes.bioboxdatas;

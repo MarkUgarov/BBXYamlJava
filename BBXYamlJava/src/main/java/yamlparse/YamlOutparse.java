@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mainsrc;
+package yamlparse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import mainsrc.datatypes.bioboxdatas.AbstractType;
-import mainsrc.datatypes.bioboxdatas.DataFormat;
-import mainsrc.datatypes.bioboxdatas.TopType;
-import mainsrc.datatypes.bioboxdatas.FastqType;
-import mainsrc.datatypes.bioboxdatas.FragmentSizeType;
+import yamlparse.datatypes.bioboxdatas.AbstractType;
+import yamlparse.datatypes.bioboxdatas.DataFormat;
+import yamlparse.datatypes.bioboxdatas.TopType;
+import yamlparse.datatypes.bioboxdatas.FastqType;
+import yamlparse.datatypes.bioboxdatas.FragmentSizeType;
 
 /**
  *

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mainsrc;
+package yamlparse;
 
 import java.net.URL;
 import java.nio.file.Path;
@@ -17,7 +17,7 @@ public abstract class Constants {
     
     // for the YamlInparse
     public static final String INPUT_FILE_URL = "https://raw.githubusercontent.com/bioboxes/data/master/images.yml";
-    public static final String LOCAL_FILE_NAME= "ApplicationList.txt";
+    public static final String LOCAL_FILE_NAME= "ApplicationList.yaml";
     
     //for the YamlOutparse
     public static final String BBX_VERSION = "0.9.0";

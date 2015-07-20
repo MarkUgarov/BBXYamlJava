@@ -1,1 +1,5 @@
 /BBXYamlJava/target/
+/.project
+/BBXYamlJava/nbactions.xml
+/BBXYamlJava/target/nb-configuration.xml
+/BBXYamlJava/biobox.yaml
