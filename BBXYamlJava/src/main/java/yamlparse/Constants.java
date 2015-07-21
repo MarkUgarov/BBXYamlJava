@@ -25,4 +25,5 @@ public abstract class Constants {
     public static final String[] VALID_FORMATS ={"fastq"};
     public static final String[] VALID_TYPES = {"paired","unpaired"};
     
+    
 }

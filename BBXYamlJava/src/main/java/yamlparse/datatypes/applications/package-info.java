@@ -3,7 +3,7 @@
  * An instance of YamlInparse has a lists of Assemblers. 
  * 
  * Data structure of this package:
- *                      _____________
+ *                _____________
  *                |Application|
  *                /
  *            (lists)
