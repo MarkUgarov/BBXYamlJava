@@ -18,16 +18,16 @@ public class BBXYamlJava {
     
     /**
      * 
-     * @return A new instance of YamlInparse.
+     * @return A new instance of ApplicationInparser.
      */
-    public YamlInparse getNewYamlInparser(){
-        return new YamlInparse();
+    public ApplicationInparser getNewApplicationInparser(){
+        return new ApplicationInparser();
     }
     
     /**
-     * @return A new instance of the YamlOutparse.
+     * @return A new instance of the BioboxfileOutparser.
      */
-    public YamlOutparse getNewYamlOutparser(){
-        return new YamlOutparse();
+    public BioboxfileOutparser getNewBioboxFileOutparser(){
+        return new BioboxfileOutparser();
     }
 }

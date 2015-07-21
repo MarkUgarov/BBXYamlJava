@@ -15,15 +15,18 @@ import java.nio.file.Path;
  */
 public abstract class Constants {
     
-    // for the YamlInparse
-    public static final String INPUT_FILE_URL = "https://raw.githubusercontent.com/bioboxes/data/master/images.yml";
-    public static final String LOCAL_FILE_NAME= "ApplicationList.yaml";
+    // for the YamlApplicationInparser
+    public static final String ASSEMBLER_INPUT_FILE_URL = "https://raw.githubusercontent.com/bioboxes/data/master/images.yml";
+    public static final String ASSEMBLER_LOCAL_FILE_NAME= "ApplicationList.yaml";
     
-    //for the YamlOutparse
+    //for the YamlBioboxfileOutparser
     public static final String BBX_VERSION = "0.9.0";
     public static final String BBX_FILE_NAME= "biobox.yaml";
     public static final String[] VALID_FORMATS ={"fastq"};
     public static final String[] VALID_TYPES = {"paired","unpaired"};
-    
+   
+    // for the YamlAssemblyEvaluationOutparser
+    public static final String ASSEMBLY_EVALUATION_FILE_URL = "https://raw.githubusercontent.com/bioboxes/rfc/master/container/assembly-evaluation/input_schema.yaml";
+    public static final String ASSEMBLY_EVALUATION_LOCAL_FILE_NAME= "AssemblyEvaluationData.yaml";
     
 }
