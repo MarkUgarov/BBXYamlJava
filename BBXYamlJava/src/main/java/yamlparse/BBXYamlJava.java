@@ -18,10 +18,11 @@ public class BBXYamlJava {
     
     /**
      * 
-     * @return A new instance of ApplicationInparser.
+     * @return A new instance of ApplicationInparserGenerator.
      */
-    public ApplicationInparser getNewApplicationInparser(){
-        return new ApplicationInparser();
+    public Inparser getNewApplicationInparser(){
+        InparserGenerator inp = new InparserGenerator();
+        return inp.getNewApplicationInparser();
     }
     
     /**

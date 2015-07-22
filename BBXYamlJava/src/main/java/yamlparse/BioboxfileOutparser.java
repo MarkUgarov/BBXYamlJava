@@ -10,15 +10,9 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import yamlparse.datatypes.bioboxdatas.AbstractType;
-import yamlparse.datatypes.bioboxdatas.DataFormat;
 import yamlparse.datatypes.bioboxdatas.BioboxTopType;
-import yamlparse.datatypes.bioboxdatas.FastqType;
-import yamlparse.datatypes.bioboxdatas.FragmentSizeType;
 
 /**
  *
@@ -50,7 +44,7 @@ public class BioboxfileOutparser {
 
             factory.createGenerator(fos).writeObject(this.getToptype());
         } catch (IOException ex) {
-            Logger.getLogger(ApplicationInparser.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BioboxTopType.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

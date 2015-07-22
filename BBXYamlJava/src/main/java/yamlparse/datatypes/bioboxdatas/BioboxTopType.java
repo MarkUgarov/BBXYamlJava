@@ -6,6 +6,7 @@
 package yamlparse.datatypes.bioboxdatas;
 
 import java.util.List;
+import yamlparse.datatypes.ParseableType;
 
 /**
  *
@@ -33,7 +34,7 @@ import java.util.List;
  *         |DataFormat|             |DataFormat|
  * 
  */
-public class BioboxTopType {
+public class BioboxTopType extends ParseableType{
     private String version;
     private List<AbstractType> arguments;
 
@@ -51,6 +52,13 @@ public class BioboxTopType {
 
     public void setVersion(String version) {
         this.version = version;
+    }
+
+    @Override
+    public String getString() {
+        return ("This is not sufficiently implemented yet because usually it "
+                + "is not necessary. You can get the output from the written "
+                + "biobox.yaml-file");
     }
     
     

@@ -5,23 +5,18 @@
  */
 package yamlparse;
 
-import yamlparse.ApplicationInparser;
-import yamlparse.Constants;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.FileSystems;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import yamlparse.datatypes.applications.Assembler;
-import yamlparse.datatypes.applications.ImageType;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import yamlparse.datatypes.ParseableType;
+import yamlparse.datatypes.applications.Applications;
+import yamlparse.datatypes.applications.Assembler;
+import yamlparse.datatypes.applications.ImageType;
 
 /**
  *
@@ -31,31 +26,18 @@ public class ApplicationInparserTest {
     
     public ApplicationInparserTest() {
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-//        System.out.println("Start testing a method in ApplicationInparser");
-    }
-    
-    @After
-    public void tearDown() {
-//        System.out.println("A Test of ApplicationInparser has been past.");
-    }
 
-  
-
-    
+   /**
+     * Test of parse method, of class Inparser.
+     */
+    @Test
+    public void testParse() {
+        System.out.println("parse");
+        assertEquals(true,true);
+    }
 
     /**
-     * Test of setYamlString method, of class ApplicationInparser.
+     * Test of setYamlString method, of class Inparser.
      */
     @Test
     public void testSetYamlString() {
@@ -75,7 +57,7 @@ public class ApplicationInparserTest {
                         "    tasks:\n" +
                         "      - default\n" +
                         "      - careful";
-        ApplicationInparser instance = new ApplicationInparser();
+        Inparser instance = new InparserGenerator().getNewApplicationInparser();
         instance.setYamlString(inp);
         instance.parse();
         Assembler ass = new Assembler();
@@ -92,35 +74,21 @@ public class ApplicationInparserTest {
         tasks.add("default");
         tasks.add("careful");
         ass.setTasks(tasks);
-        String expected = this.getAssemblerString(ass);
-        String parsedString = this.getAssemblerString(instance.getAssemblers().get(0));
+        Applications helperApp = new Applications();
+        String expected = helperApp.getAssemblerString(ass);
+        String parsedString = helperApp.getAssemblerString(((Applications)instance.getParseResults()).getAssemblers().get(0));
         assertEquals(expected,parsedString);
     }
-    
-    private String getAssemblerString(Assembler ass){
-        String n = System.getProperty("line.separator");
-        StringBuilder taskLister = new StringBuilder();
-        return new String(
-                "   image:"+n+
-                "       dockerhub: " +ass.getImage().getDockerhub() +n+
-                "       repo: " + ass.getImage().getRepo() +n+
-                "       source: "+ ass.getImage().getSource() + n+ 
-                "   pmid: "+ass.getPmid() +n+
-                "   homepage: "+ ass.getHomepage() + n+
-                "   description:" + ass.getDescription() +n+
-                "   mailing list: "+ass.getMailing_list()+n+
-                "   tasks: " +n + ass.getTasks().toString()
-        );
-    }
 
+    
 
     /**
-     * Test of readFile and the updateFile method, of class ApplicationInparser.
+     * Test of readFile method, of class Inparser.
      */
     @Test
     public void testReadFile() {
-        System.out.println("readFile and updateFile");
-        ApplicationInparser instance = new ApplicationInparser();
+         System.out.println("readFile and updateFile");
+        ApplicationInparser instance = new InparserGenerator().getNewApplicationInparser();
         
         try {
             File file = File.createTempFile("TempInpFile", null);
@@ -128,13 +96,30 @@ public class ApplicationInparserTest {
                     } catch (IOException ex) {
             Logger.getLogger(ApplicationInparserTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-        instance.setWebURLString(Constants.ASSEMBLER_INPUT_FILE_URL);
         instance.updateFile();
         instance.readFile();
         instance.parse();
-        boolean assemblersFound = !instance.getAssemblers().isEmpty();
+        boolean assemblersFound = !(instance.getParseResults().getAssemblers().isEmpty());
         assertEquals(true,assemblersFound);
-        
     }
+
+    /**
+     * Test of updateFile method, of class Inparser.
+     */
+    @Test
+    public void testUpdateFile() {
+        System.out.println("updateFile");
+        Inparser instance = new InparserGenerator().getNewApplicationInparser();
+         try {
+            File file = File.createTempFile("TempInpFile", null);
+            instance.setlocalPath(file.getAbsolutePath());
+                    } catch (IOException ex) {
+            Logger.getLogger(ApplicationInparserTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        instance.updateFile();
+        // no assertEquals needed because the method itself would throw an error
+        // if an error occurs check your connection to the internet
+    }
+
     
 }

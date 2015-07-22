@@ -16,8 +16,8 @@ import java.nio.file.Path;
 public abstract class Constants {
     
     // for the YamlApplicationInparser
-    public static final String ASSEMBLER_INPUT_FILE_URL = "https://raw.githubusercontent.com/bioboxes/data/master/images.yml";
-    public static final String ASSEMBLER_LOCAL_FILE_NAME= "ApplicationList.yaml";
+    public static final String APPLICATIONS_INPUT_FILE_URL = "https://raw.githubusercontent.com/bioboxes/data/master/images.yml";
+    public static final String APPLICATIONS_LOCAL_FILE_NAME= "ApplicationList.yaml";
     
     //for the YamlBioboxfileOutparser
     public static final String BBX_VERSION = "0.9.0";

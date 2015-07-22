@@ -6,12 +6,13 @@
 package yamlparse.datatypes.assemblyevaluation;
 
 import java.util.ArrayList;
+import yamlparse.datatypes.ParseableType;
 
 /**
  *
  * @author Mark
  */
-public class AssemblyEvaluationTopType{
+public class AssemblyEvaluationTopType extends ParseableType{
     private String $schema;
     private String title;
     private String type;
@@ -23,6 +24,18 @@ public class AssemblyEvaluationTopType{
     private boolean additionalProperties;
     
     private Definitions definitions;
+    
+    @Override
+    public String getString(){
+       String n = System.getProperty("line.separator");
+       StringBuilder taskLister = new StringBuilder();
+       String ret = new String(
+               "$schema: " + this.$schema +n+
+               "title: " +this.title +n+
+                       "This ist just a small test."
+       );
+       return ret;
+    }
 
     public String get$schema() {
         return $schema;
