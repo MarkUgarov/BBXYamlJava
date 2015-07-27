@@ -5,7 +5,7 @@
  */
 package yamlparse;
 
-import yamlparse.BioboxfileOutparser;
+import yamlparse.parser.BioboxfileOutparser;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -45,6 +45,7 @@ public class BioboxfileOutparserTest {
         try {
             // writing a testfile
             File file = File.createTempFile("TempOutFile", "yaml");
+            file.createNewFile();
             instance.setOutputPath(file.getAbsolutePath());
             instance.setToptype(this.generateTestTopType());
             instance.write();

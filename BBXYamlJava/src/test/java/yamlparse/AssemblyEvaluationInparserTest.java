@@ -59,11 +59,11 @@ public class AssemblyEvaluationInparserTest {
     @Test
     public void testGetEvaluationString() {
         System.out.println("getEvaluationString");
-        AssemblyEvaluationTopType aett = null;
+        AssemblyEvaluationTopType aett = new AssemblyEvaluationTopType();
         Inparser instance = new InparserGenerator().getNewAssemblyEvaluationInparser();
         String expResult = "";
-        String result = instance.getParseResults().getString();
-        assertEquals(expResult, result);
+//        String result = instance.getParseResults().getString();
+//        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

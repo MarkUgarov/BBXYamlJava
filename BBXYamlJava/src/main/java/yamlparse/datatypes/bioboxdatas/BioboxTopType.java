@@ -5,6 +5,7 @@
  */
 package yamlparse.datatypes.bioboxdatas;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import yamlparse.datatypes.ParseableType;
 
@@ -55,6 +56,7 @@ public class BioboxTopType extends ParseableType{
     }
 
     @Override
+    @JsonIgnore 
     public String getString() {
         return ("This is not sufficiently implemented yet because usually it "
                 + "is not necessary. You can get the output from the written "

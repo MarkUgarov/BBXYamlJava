@@ -5,6 +5,7 @@
  */
 package yamlparse.datatypes.assemblyevaluation;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import yamlparse.datatypes.ParseableType;
 
@@ -26,6 +27,7 @@ public class AssemblyEvaluationTopType extends ParseableType{
     private Definitions definitions;
     
     @Override
+    @JsonIgnore 
     public String getString(){
        String n = System.getProperty("line.separator");
        StringBuilder taskLister = new StringBuilder();

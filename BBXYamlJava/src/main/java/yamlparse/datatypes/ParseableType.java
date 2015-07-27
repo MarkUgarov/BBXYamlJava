@@ -10,6 +10,6 @@ package yamlparse.datatypes;
  * @author Mark
  */
 public abstract class ParseableType {
-    
+    //@JsonIgnore 
     public abstract String getString();
 }

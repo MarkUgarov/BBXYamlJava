@@ -87,5 +87,7 @@ public abstract class Inparser {
     public abstract void setWebURLString(String webURLString);
 
     public abstract ParseableType getParseResults();
+    
+    public abstract String getString();
 
 }

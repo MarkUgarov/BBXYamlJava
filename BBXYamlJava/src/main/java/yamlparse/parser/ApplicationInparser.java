@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package yamlparse;
+package yamlparse.parser;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,6 +21,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import yamlparse.Inparser;
 import yamlparse.datatypes.applications.Applications;
 
 /**
@@ -190,5 +191,16 @@ public class ApplicationInparser extends Inparser{
     @Override
     public Applications getParseResults() {
         return parseResults;
+    }
+    
+    @Override
+    public String getString(){
+        if(this.parseResults==null){
+            return "No results could be found yet. Please parse valid data.";
+        }
+        else{
+            return this.parseResults.getString();
+        }
+        
     }
 }

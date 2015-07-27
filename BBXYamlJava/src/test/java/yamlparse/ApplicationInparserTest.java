@@ -5,6 +5,7 @@
  */
 package yamlparse;
 
+import yamlparse.parser.ApplicationInparser;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -88,7 +89,7 @@ public class ApplicationInparserTest {
     @Test
     public void testReadFile() {
          System.out.println("readFile and updateFile");
-        ApplicationInparser instance = new InparserGenerator().getNewApplicationInparser();
+        Inparser instance = new InparserGenerator().getNewApplicationInparser();
         
         try {
             File file = File.createTempFile("TempInpFile", null);
@@ -99,7 +100,7 @@ public class ApplicationInparserTest {
         instance.updateFile();
         instance.readFile();
         instance.parse();
-        boolean assemblersFound = !(instance.getParseResults().getAssemblers().isEmpty());
+        boolean assemblersFound = !(((ApplicationInparser)instance).getParseResults().getAssemblers().isEmpty());
         assertEquals(true,assemblersFound);
     }
 
