@@ -5,7 +5,8 @@
  */
 package yamlparse;
 
-import yamlparse.parser.ApplicationInparser;
+import yamlparse.parser.abstracts.AbstractParseManager;
+import yamlparse.parser.Manager.InparseManager;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import yamlparse.datatypes.ParseableType;
 import yamlparse.datatypes.applications.Applications;
 import yamlparse.datatypes.applications.Assembler;
 import yamlparse.datatypes.applications.ImageType;
+import yamlparse.parser.ApplicationsInparser;
 
 /**
  *
@@ -29,7 +31,7 @@ public class ApplicationInparserTest {
     }
 
    /**
-     * Test of parse method, of class Inparser.
+     * Test of parse method, of class AbstractParseManager.
      */
     @Test
     public void testParse() {
@@ -38,7 +40,7 @@ public class ApplicationInparserTest {
     }
 
     /**
-     * Test of setYamlString method, of class Inparser.
+     * Test of setYamlString method, of class AbstractParseManager.
      */
     @Test
     public void testSetYamlString() {
@@ -58,7 +60,7 @@ public class ApplicationInparserTest {
                         "    tasks:\n" +
                         "      - default\n" +
                         "      - careful";
-        Inparser instance = new InparserGenerator().getNewApplicationInparser();
+        InparseManager instance = ((InparseManager) new ParserGenerator().getNewApplicationInparser());
         instance.setYamlString(inp);
         instance.parse();
         Assembler ass = new Assembler();
@@ -84,12 +86,12 @@ public class ApplicationInparserTest {
     
 
     /**
-     * Test of readFile method, of class Inparser.
+     * Test of readFile method, of class AbstractParseManager.
      */
     @Test
     public void testReadFile() {
          System.out.println("readFile and updateFile");
-        Inparser instance = new InparserGenerator().getNewApplicationInparser();
+         InparseManager instance = ((InparseManager) new ParserGenerator().getNewApplicationInparser());
         
         try {
             File file = File.createTempFile("TempInpFile", null);
@@ -100,17 +102,17 @@ public class ApplicationInparserTest {
         instance.updateFile();
         instance.readFile();
         instance.parse();
-        boolean assemblersFound = !(((ApplicationInparser)instance).getParseResults().getAssemblers().isEmpty());
+        boolean assemblersFound = !((Applications)(((InparseManager)instance).getParseResults())).getAssemblers().isEmpty();
         assertEquals(true,assemblersFound);
     }
 
     /**
-     * Test of updateFile method, of class Inparser.
+     * Test of updateFile method, of class AbstractParseManager.
      */
     @Test
     public void testUpdateFile() {
         System.out.println("updateFile");
-        Inparser instance = new InparserGenerator().getNewApplicationInparser();
+        InparseManager instance = ((InparseManager) new ParserGenerator().getNewApplicationInparser());
          try {
             File file = File.createTempFile("TempInpFile", null);
             instance.setlocalPath(file.getAbsolutePath());

@@ -21,29 +21,29 @@ import yamlparse.datatypes.ParseableType;
                       ______|_____
                       |BBXArgument|
                   (has a List<AbstractType> 
- *                     with two Elements)
- *                     /             \ 
- *                    /               \
- *                (uses)              (uses)
- *                  /                    \
- *       __________/_________     ________\___________
- *       |FastqType         |     |FragmentSizeType  |
- *       |(ext.AbstractType)|     |(ext.AbstractType)|
- *              |                        |
- *           (uses)                    (uses)
- *         _____|______             _____|______
- *         |DataFormat|             |DataFormat|
+                     with two Elements)
+                     /             \ 
+                    /               \
+                (uses)              (uses)
+                  /                    \
+       __________/_________     ________\___________
+       |FastqType         |     |FragmentSizeType  |
+       |(ext.BBXArgument)|     |(ext.BBXArgument)|
+              |                        |
+           (uses)                    (uses)
+         _____|______             _____|______
+         |DataFormat|             |DataFormat|
  * 
  */
 public class BioboxTopType extends ParseableType{
     private String version;
-    private List<AbstractType> arguments;
+    private List<BBXArgument> arguments;
 
-    public List<AbstractType> getArguments() {
+    public List<BBXArgument> getArguments() {
         return arguments;
     }
 
-    public void setArguments(List<AbstractType> arguments) {
+    public void setArguments(List<BBXArgument> arguments) {
         this.arguments = arguments;
     }
 
@@ -54,7 +54,8 @@ public class BioboxTopType extends ParseableType{
     public void setVersion(String version) {
         this.version = version;
     }
-
+    
+   
     @Override
     @JsonIgnore 
     public String getString() {

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package yamlparse;
+package yamlparse.parser.abstracts;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,7 +28,7 @@ import yamlparse.datatypes.ParseableType;
  *
  * @author Mark
  */
-public abstract class Inparser {
+public abstract class AbstractParseManager {
     
    
     /**
@@ -39,55 +39,23 @@ public abstract class Inparser {
      * @param url for the online source where the data will be read from if you 
      * use updateFile() 
      */
-    public Inparser(String path, String url){
+    public AbstractParseManager(String path, String url){
         
     };
     
     /**
      * Can be intantiated without parameters - don't forget to set the 
      * the url before updating and/or the path before reading  and/or the
-     * yamlString before parsing seperatly.
+     * yamlString before parsing seperatly AND set the parser.
      */
-    public Inparser(){
+    public AbstractParseManager(){
         
     };
     
     public abstract void parse();
     
-    
-    /**
-     * Sets the String for the parse()- method manually. 
-     * @param inp is a String with the content of the input. 
-     */
-    public abstract void setYamlString(String inp);
-    /**
-     * If you want to read out from a file, you can set the path here.
-     * Don't forget to use the right slash depending on your filsystem and 
-     * reread the file via the readFile() - method.
-     * @param path is a String
-     * Be careful: The file will be overwritten if you use updateFile() after 
-     * that
-     */
-    public abstract void setlocalPath(String path);
-    
-    public abstract String getlocalPath();
-    
-    public abstract void readFile();
-    
-    /**
-     * This will read from the url you set and set its content for the String
-     * which will be parsed if you use parse() later on. 
-     * Be careful: It will overwrite the current file on the local path. You
-     * can change the path with the setlocalPath(String ...)- method. 
-     */
-    public abstract void updateFile();
-    
-    public abstract String getWebURLString();
-
-    public abstract void setWebURLString(String webURLString);
-
-    public abstract ParseableType getParseResults();
-    
     public abstract String getString();
+    
+    public abstract void setParser(AbstractParser parser);
 
 }

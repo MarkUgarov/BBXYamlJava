@@ -5,6 +5,8 @@
  */
 package yamlparse;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.io.Serializable;
 import java.net.URL;
 import java.nio.file.Path;
 
@@ -23,7 +25,7 @@ public abstract class Constants {
     public static final String BBX_VERSION = "0.9.0";
     public static final String BBX_FILE_NAME= "biobox.yaml";
     public static final String[] VALID_FORMATS ={"fastq"};
-    public static final String[] VALID_TYPES = {"paired","unpaired"};
+    public static enum Type implements Serializable {paired, unpaired, scaffold, contig}
    
     // for the YamlAssemblyEvaluationOutparser
     public static final String ASSEMBLY_EVALUATION_FILE_URL = "https://raw.githubusercontent.com/bioboxes/rfc/master/container/assembly-evaluation/input_schema.yaml";

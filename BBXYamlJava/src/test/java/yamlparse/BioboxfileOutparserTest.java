@@ -5,7 +5,6 @@
  */
 package yamlparse;
 
-import yamlparse.parser.BioboxfileOutparser;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -15,13 +14,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import yamlparse.datatypes.bioboxdatas.AbstractType;
+import yamlparse.datatypes.bioboxdatas.BBXArgument;
 import yamlparse.datatypes.bioboxdatas.DataFormat;
 import yamlparse.datatypes.bioboxdatas.FastqType;
 import yamlparse.datatypes.bioboxdatas.FragmentSizeType;
 import yamlparse.datatypes.bioboxdatas.BioboxTopType;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static yamlparse.Constants.Type;
+import yamlparse.datatypes.bioboxdatas.Cache;
+import yamlparse.datatypes.bioboxdatas.FastaType;
+import yamlparse.datatypes.bioboxdatas.Fasta_DirType;
+
+import yamlparse.parser.Manager.OutparseManager;
 
 /**
  *
@@ -35,12 +40,12 @@ public class BioboxfileOutparserTest {
     
 
     /**
-     * Test of write method, of class BioboxfileOutparser.
+     * Test of parse method, of class BioboxfileOutparser.
      */
     @Test
     public void testWrite() {
         System.out.println("write");
-        BioboxfileOutparser instance = new BioboxfileOutparser();
+        OutparseManager instance = (OutparseManager)(new ParserGenerator().getNewBioboxOutparser());
         String result = null;
         try {
             // writing a testfile
@@ -48,7 +53,7 @@ public class BioboxfileOutparserTest {
             file.createNewFile();
             instance.setOutputPath(file.getAbsolutePath());
             instance.setToptype(this.generateTestTopType());
-            instance.write();
+            instance.parse();
             // reading out from the file
             byte[] encoded = Files.readAllBytes(Paths.get(file.getAbsolutePath()));
             result = new String(encoded, Charset.defaultCharset());
@@ -60,25 +65,34 @@ public class BioboxfileOutparserTest {
                         "arguments:\n" +
                         "- fastq:\n" +
                         "  - id: \"testID1\"\n" +
-                        "    type: \"testType1\"\n" +
+                        "    type: \"paired\"\n" +
                         "    value: \"testValue1\"\n" +
                         "- fragment_size:\n" +
                         "  - id: \"testID2\"\n" +
                         "    type: null\n" +
-                        "    value: \"testValue2\"";
+                        "    value: \"testValue2\"\n" +
+                        "- fasta:\n"+
+                        "  - id: \"testID3\"\n"+
+                        "    type: \"unpaired\"\n"+
+                        "    value: \"testPath\"\n"+
+                        "- fasta_dir: \"TestDir\"\n"+
+                        "- cache: \"noCache\"";
+        //System.out.println(result);
         assertEquals(expected,result);
     }
     
     private BioboxTopType generateTestTopType(){
         BioboxTopType toptype = new BioboxTopType();
+        
         FastqType fq = new FastqType();
         List<DataFormat> dfList1= new ArrayList<>();
         DataFormat df1 = new DataFormat(); 
         df1.setId("testID1");
-        df1.setType("testType1");
+        df1.setType(Type.paired);
         df1.setValue("testValue1");
         dfList1.add(df1);
         fq.setFastq(dfList1);
+        
         FragmentSizeType fs = new FragmentSizeType();
         List<DataFormat> dfList2= new ArrayList<>();
         DataFormat df2 = new DataFormat(); 
@@ -86,9 +100,28 @@ public class BioboxfileOutparserTest {
         df2.setValue("testValue2");
         dfList2.add(df2);
         fs.setFragment_size(dfList2);
-        ArrayList<AbstractType> args = new ArrayList<>();
+        
+        Fasta_DirType fdir = new Fasta_DirType();
+        fdir.setFasta_dir("TestDir");
+        
+        FastaType fa = new FastaType();
+        List<DataFormat> dfList3= new ArrayList<>();
+        DataFormat df3 = new DataFormat(); 
+        df3.setId("testID3");
+        df3.setType(Type.unpaired);
+        df3.setValue("testPath");
+        dfList3.add(df3);
+        fa.setFasta(dfList3);
+        
+        Cache c = new Cache();
+        c.setCache("noCache");
+        
+        ArrayList<BBXArgument> args = new ArrayList<>();
         args.add(fq);
         args.add(fs);
+        args.add(fa);
+        args.add(fdir);
+        args.add(c);
         toptype.setArguments(args);
         toptype.setVersion("0.9.0");
         return toptype;

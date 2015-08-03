@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package yamlparse.datatypes.assemblyevaluation;
+package yamlparse.parser.abstracts;
 
 /**
  *
  * @author Mark
  */
-public class Reference {
-    private String $ref;
+public class AbstractParser {
     
 }

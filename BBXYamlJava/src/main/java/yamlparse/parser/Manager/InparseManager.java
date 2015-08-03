@@ -3,11 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package yamlparse.parser;
+package yamlparse.parser.Manager;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import yamlparse.parser.abstracts.AbstractInParser;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
@@ -21,14 +19,15 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import yamlparse.Inparser;
-import yamlparse.datatypes.applications.Applications;
+import yamlparse.parser.abstracts.AbstractParseManager;
+import yamlparse.datatypes.ParseableType;
+import yamlparse.parser.abstracts.AbstractParser;
 
 /**
  *
  * @author Mark
  */
-public class ApplicationInparser extends Inparser{
+public class InparseManager extends AbstractParseManager{
     private URL url;
     private File localFile;
     private String localPath;
@@ -43,9 +42,8 @@ public class ApplicationInparser extends Inparser{
     
     // for parsing
     private String yamlString;
-    private YAMLFactory factory;
-    private JsonParser parser;
-    private Applications parseResults; 
+    private ParseableType parseResults; 
+    private AbstractInParser inparser;
    
     /**
      * Can be intantiated with two parameters.
@@ -55,39 +53,36 @@ public class ApplicationInparser extends Inparser{
      * @param url for the online source where the data will be read from if you 
      * use updateFile() 
      */
-    public ApplicationInparser(String path, String url){
+    public InparseManager(String path, String url, AbstractInParser inp){
         this.localPath = path;
         this.parseResults = null;
         this.yamlString = null;
         this.webURLString = url;
+        this.inparser = inp;
     }
     
     /**
      * Can be intantiated without parameters - don't forget to set the 
-     * the url before updating and/or the path before reading  and/or the
-     * yamlString before parsing seperatly.
+ the url before updating and/or the path before reading  and/or the
+ yamlString before parsing seperatly AND set an AbstractInParser.
      */
-     public ApplicationInparser() {
+     public InparseManager() {
         this.localPath = null;
         this.parseResults = null;
         this.yamlString = null;
         this.webURLString = null;
+        this.inparser = null;
     }
     
     @Override
     public void parse(){ 
-        try {
-            if(this.yamlString== null){
-                this.readFile();
-                if(this.yamlString.length()==0){
-                    this.updateFile();
-                }
+        if(this.yamlString== null){
+            this.readFile();
+            if(this.yamlString.length()==0){
+                this.updateFile();
             }
-            ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-            this.parseResults = mapper.readValue(yamlString, yamlparse.datatypes.applications.Applications.class);
-        } catch (IOException ex) {
-            Logger.getLogger(Inparser.class.getName()).log(Level.SEVERE, null, ex);
         }
+        this.parseResults =this.inparser.parse(yamlString);
     }
     
     
@@ -95,7 +90,6 @@ public class ApplicationInparser extends Inparser{
      * Sets the String for the parse()- method manually. 
      * @param inp is a String with the content of the input. 
      */
-    @Override
     public void setYamlString(String inp){
         this.yamlString = inp;
     }
@@ -107,24 +101,21 @@ public class ApplicationInparser extends Inparser{
      * Be careful: The file will be overwritten if you use updateFile() after 
      * that
      */
-    @Override
     public void setlocalPath(String path){
         this.localPath = path;
     }
     
-    @Override
     public String getlocalPath(){
         return this.localPath;
     }
     
-    @Override
     public void readFile(){
          byte[] encoded;
         try {
             encoded = Files.readAllBytes(Paths.get(this.localPath));
             this.yamlString = new String(encoded, Charset.defaultCharset());
         } catch (IOException ex) {
-            Logger.getLogger(Inparser.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AbstractParseManager.class.getName()).log(Level.SEVERE, null, ex);
         }
          
     }
@@ -135,13 +126,12 @@ public class ApplicationInparser extends Inparser{
      * Be careful: It will overwrite the current file on the local path. You
      * can change the path with the setlocalPath(String ...)- method. 
      */
-    @Override
     public void updateFile(){
         //adjusting the input and ouput
         try {
             this.url = new URL(this.webURLString);
         } catch (MalformedURLException ex) {
-            Logger.getLogger(Inparser.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AbstractParseManager.class.getName()).log(Level.SEVERE, null, ex);
         }
        
         this.localFile = new File(this.localPath);
@@ -149,7 +139,7 @@ public class ApplicationInparser extends Inparser{
             try {
                 this.localFile.createNewFile();
             } catch (IOException ex) {
-                Logger.getLogger(Inparser.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AbstractParseManager.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         this.localPath = this.localFile.getAbsolutePath();
@@ -173,23 +163,20 @@ public class ApplicationInparser extends Inparser{
             
             
         } catch (IOException ex) {
-            Logger.getLogger(Inparser.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AbstractParseManager.class.getName()).log(Level.SEVERE, null, ex);
         } 
 
     }
     
-    @Override
     public String getWebURLString() {
         return webURLString;
     }
 
-    @Override
     public void setWebURLString(String webURLString) {
         this.webURLString = webURLString;
     }
 
-    @Override
-    public Applications getParseResults() {
+    public ParseableType getParseResults() {
         return parseResults;
     }
     
@@ -202,5 +189,18 @@ public class ApplicationInparser extends Inparser{
             return this.parseResults.getString();
         }
         
+    }
+
+    public AbstractInParser getInparser() {
+        return inparser;
+    }
+
+    public void setInparser(AbstractInParser inparser) {
+        this.inparser = inparser;
+    }
+
+    @Override
+    public void setParser(AbstractParser parser) {
+        this.inparser = (AbstractInParser) parser;
     }
 }

@@ -5,8 +5,9 @@
  */
 package yamlparse;
 
+import yamlparse.parser.abstracts.AbstractParseManager;
 import yamlparse.parser.BioboxfileOutparser;
-import yamlparse.parser.ApplicationInparser;
+import yamlparse.parser.Manager.InparseManager;
 
 /**
  *
@@ -23,8 +24,8 @@ public class BBXYamlJava {
      * 
      * @return A new instance of ApplicationInparserGenerator.
      */
-    public Inparser getNewApplicationInparser(){
-        InparserGenerator inp = new InparserGenerator();
+    public AbstractParseManager getNewApplicationInparser(){
+        ParserGenerator inp = new ParserGenerator();
         return inp.getNewApplicationInparser();
     }
     
