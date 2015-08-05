@@ -5,7 +5,7 @@
  */
 package yamlparse.datatypes.bioboxdatas;
 
-import yamlparse.Constants.Type;
+import yamlparse.Constants.FastType;
 
 
 
@@ -16,7 +16,7 @@ import yamlparse.Constants.Type;
  */
 public class DataFormat {
     private String id;
-    private Type type;
+    private FastType type;
     private String value;
     
 
@@ -32,11 +32,11 @@ public class DataFormat {
         this.id = id+"";
     }
 
-    public Type getType() {
+    public FastType getType() {
         return type;
     }
 
-    public void setType(Type type) {
+    public void setType(FastType type) {
         this.type = type;
     }
 

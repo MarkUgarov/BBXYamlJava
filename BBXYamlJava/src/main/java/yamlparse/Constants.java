@@ -24,8 +24,8 @@ public abstract class Constants {
     //for the YamlBioboxfileOutparser
     public static final String BBX_VERSION = "0.9.0";
     public static final String BBX_FILE_NAME= "biobox.yaml";
-    public static final String[] VALID_FORMATS ={"fastq"};
-    public static enum Type implements Serializable {paired, unpaired, scaffold, contig}
+    public static final String[] VALID_FORMATS ={"fastq", "fasta"};
+    public static enum FastType implements Serializable {paired, unpaired, scaffold, contig}
    
     // for the YamlAssemblyEvaluationOutparser
     public static final String ASSEMBLY_EVALUATION_FILE_URL = "https://raw.githubusercontent.com/bioboxes/rfc/master/container/assembly-evaluation/input_schema.yaml";

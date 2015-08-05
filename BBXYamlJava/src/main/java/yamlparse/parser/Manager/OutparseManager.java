@@ -59,4 +59,5 @@ public class OutparseManager extends AbstractParseManager{
         this.outparser = (AbstractOutParser) parser;
     }
     
+    
 }

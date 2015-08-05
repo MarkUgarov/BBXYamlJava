@@ -3,9 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package yamlparse.datatypes.applications;
+package yamlparse.generators;
 
 import java.util.ArrayList;
+import yamlparse.datatypes.applications.Applications;
+import yamlparse.datatypes.applications.Assembler;
+import yamlparse.datatypes.applications.FlatAssembler;
 
 /**
  *

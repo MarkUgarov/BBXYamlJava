@@ -5,6 +5,7 @@
  */
 package yamlparse;
 
+import yamlparse.generators.ParserGenerator;
 import yamlparse.parser.abstracts.AbstractParseManager;
 import yamlparse.parser.Manager.InparseManager;
 import java.io.File;

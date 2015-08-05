@@ -5,6 +5,7 @@
  */
 package yamlparse;
 
+import yamlparse.generators.ParserGenerator;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -21,7 +22,7 @@ import yamlparse.datatypes.bioboxdatas.FragmentSizeType;
 import yamlparse.datatypes.bioboxdatas.BioboxTopType;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import static yamlparse.Constants.Type;
+import static yamlparse.Constants.FastType;
 import yamlparse.datatypes.bioboxdatas.Cache;
 import yamlparse.datatypes.bioboxdatas.FastaType;
 import yamlparse.datatypes.bioboxdatas.Fasta_DirType;
@@ -33,7 +34,10 @@ import yamlparse.parser.Manager.OutparseManager;
  * @author Mark
  */
 public class BioboxfileOutparserTest {
-    
+    /**
+     * PLEASE NOTE THIS IS A GENERAL TEST AND NOT A GOOD EXAMPLE FOR USAGE.
+     * For better useable examples look at the Generator-Tests.
+     */
     public BioboxfileOutparserTest() {
     }
 
@@ -73,7 +77,7 @@ public class BioboxfileOutparserTest {
                         "    value: \"testValue2\"\n" +
                         "- fasta:\n"+
                         "  - id: \"testID3\"\n"+
-                        "    type: \"unpaired\"\n"+
+                        "    type: \"contig\"\n"+
                         "    value: \"testPath\"\n"+
                         "- fasta_dir: \"TestDir\"\n"+
                         "- cache: \"noCache\"";
@@ -83,12 +87,12 @@ public class BioboxfileOutparserTest {
     
     private BioboxTopType generateTestTopType(){
         BioboxTopType toptype = new BioboxTopType();
-        
+        // start of the parameters of assemblers
         FastqType fq = new FastqType();
         List<DataFormat> dfList1= new ArrayList<>();
         DataFormat df1 = new DataFormat(); 
         df1.setId("testID1");
-        df1.setType(Type.paired);
+        df1.setType(FastType.paired);
         df1.setValue("testValue1");
         dfList1.add(df1);
         fq.setFastq(dfList1);
@@ -101,6 +105,7 @@ public class BioboxfileOutparserTest {
         dfList2.add(df2);
         fs.setFragment_size(dfList2);
         
+        // start of the parameters of assembly-evaluation
         Fasta_DirType fdir = new Fasta_DirType();
         fdir.setFasta_dir("TestDir");
         
@@ -108,7 +113,7 @@ public class BioboxfileOutparserTest {
         List<DataFormat> dfList3= new ArrayList<>();
         DataFormat df3 = new DataFormat(); 
         df3.setId("testID3");
-        df3.setType(Type.unpaired);
+        df3.setType(FastType.contig);
         df3.setValue("testPath");
         dfList3.add(df3);
         fa.setFasta(dfList3);
