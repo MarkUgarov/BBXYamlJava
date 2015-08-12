@@ -9,7 +9,7 @@ In this readme I will show you to integrate and use this package. After that, i 
 Go into your .pom - file and add 
 ~~~XML
  <repository>
-    < id>bbxyamljava-repository</id>
+    <id>bbxyamljava-repository</id>
     <url>https:/github.org/MarkUgarov/BBXYamlJava/raw/mvn-repo</url>
 </repository>
 ~~~
