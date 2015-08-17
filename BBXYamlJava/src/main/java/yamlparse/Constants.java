@@ -17,7 +17,7 @@ public abstract class Constants {
     
     // for the YamlInparse
     public static final String INPUT_FILE_URL = "https://raw.githubusercontent.com/bioboxes/data/master/images.yml";
-    public static final String LOCAL_FILE_NAME= "ApplicationList.yaml";
+    public static final String LOCAL_FILE_NAME= "ApplicationList.txt";
     
     //for the YamlOutparse
     public static final String BBX_VERSION = "0.9.0";
