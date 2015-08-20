@@ -9,20 +9,17 @@ import java.util.List;
 
 /**
  *
- * @author Mark Ugarov
+ * @author Mark
  */
-public class FastqType extends BBXArgument{
-    
-    private List<DataFormat> fastq;
+public class FastaType extends BBXArgument{
+     private List<DataFormat> fasta;
 
-    public List<DataFormat> getFastq() {
-        return fastq;
+    public List<DataFormat> getFasta() {
+        return fasta;
     }
 
-    public void setFastq(List<DataFormat> fastq) {
-        this.fastq = fastq;
+    public void setFasta(List<DataFormat> fasta) {
+        this.fasta = fasta;
     }
-    
-
     
 }

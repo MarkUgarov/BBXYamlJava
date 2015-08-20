@@ -7,8 +7,19 @@ package yamlparse.datatypes.bioboxdatas;
 
 /**
  *
- * @author mugarov
+ * @author Mark
  */
-public abstract class BBXArgument {
+public class Cache extends BBXArgument{
+    
+    private String cache;
+
+    public String getCache() {
+        return cache;
+    }
+
+    public void setCache(String cache) {
+        this.cache = cache;
+    }
+    
     
 }

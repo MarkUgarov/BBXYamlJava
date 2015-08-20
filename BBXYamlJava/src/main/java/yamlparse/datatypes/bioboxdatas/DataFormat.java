@@ -5,14 +5,21 @@
  */
 package yamlparse.datatypes.bioboxdatas;
 
+import yamlparse.Constants.FastType;
+
+
+
+
 /**
  *
  * @author mugarov
  */
 public class DataFormat {
     private String id;
-    private String type;
+    private FastType type;
     private String value;
+    
+
 
     public String getId() {
         return id;
@@ -21,12 +28,15 @@ public class DataFormat {
     public void setId(String id) {
         this.id = id;
     }
+    public void setId(int id) {
+        this.id = id+"";
+    }
 
-    public String getType() {
+    public FastType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(FastType type) {
         this.type = type;
     }
 

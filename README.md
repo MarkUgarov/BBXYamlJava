@@ -9,7 +9,7 @@ In this readme I will show you to integrate and use this package. After that, i 
 Go into your .pom - file and add 
 ~~~XML
  <repository>
-    < id>bbxyamljava-repository</id>
+    <id>bbxyamljava-repository</id>
     <url>https:/github.org/MarkUgarov/BBXYamlJava/raw/mvn-repo</url>
 </repository>
 ~~~
@@ -18,7 +18,7 @@ to the repositories-section. Also add
 <dependency>
     <groupId>com.mugarov </groupId>
     <artifactId>BBXYamlJava</artifactId>
-    <version>v0.1.0</version>
+    <version>v0.2.0</version>
     <type>jar</type>
 </dependency>
 ~~~
@@ -27,9 +27,21 @@ to the dependencies- section. Please check if there is a better version for you 
 ## Step 2: How to use.
 
 For practical examples: See JUnit-Tests in this package. 
+
 You will need to import import yamlparse.BBXYamlJava first, then make an instance out of this class. 
-For parsing .yaml-formated files into the abstract dataformat get a new instance of yamlparse.YamlInparse  by using #BBXYamlJava.getNewYamlInparser(),
-for outparsing into a biobox.yaml-file from an abstract datatype use  #BBXYamlJava.getNewYamlOutparser(). 
+
+Probably you will want to start from #BBXYamlJava.getNew[XXX]Inparser for inparsing or #BBXYamlJava.getNew[XXX]Generator for outparsing.
+
+The current version provides 
+- one kind of inparseable formats
+- two kinds of outparseable formats
+as you can see in the JUnit-Tests
+
+There are three types of tools implemented to provide a more intuitive parsing. 
+ - The Managers (InparseManager and OutparseManager) are for parsing in general: they store the informations about the local path and the content (in terms of a String) as well as the abstract datastructures. The InparseManager also provides tools for downloading from an url.
+ - Generators for the essential functionality of outparsing. You will be able to outparse only by looking at the JUnit-Tests in yamlparse.generators in the Test Packages. They provide a "flatter" way to define and generate the abstract data structures implemented. 
+ - A Flattener-function for complex abstract datastructures. They are equivalent to the Generators, but have another usage.
+
 ___
 
 #How to host your own Maven-Repository on github:

@@ -5,6 +5,14 @@
  */
 package yamlparse;
 
+import yamlparse.generators.AssemblerGenerator;
+import yamlparse.generators.AssemblyEvaluationGenerator;
+import yamlparse.generators.ParserGenerator;
+import yamlparse.parser.abstracts.AbstractParseManager;
+import yamlparse.parser.BioboxfileOutparser;
+import yamlparse.parser.Manager.InparseManager;
+import yamlparse.parser.Manager.OutparseManager;
+
 /**
  *
  * @author Mark
@@ -18,16 +26,27 @@ public class BBXYamlJava {
     
     /**
      * 
-     * @return A new instance of YamlInparse.
+     * @return A new instance of ApplicationInparserGenerator.
      */
-    public YamlInparse getNewYamlInparser(){
-        return new YamlInparse();
+    public InparseManager getNewApplicationInparser(){
+        ParserGenerator inp = new ParserGenerator();
+        return inp.getNewApplicationInparser();
     }
     
     /**
-     * @return A new instance of the YamlOutparse.
+     * An old method, very complicated - better use Generators for outparsing. 
+     * @return A new instance of the BioboxfileOutparser.
      */
-    public YamlOutparse getNewYamlOutparser(){
-        return new YamlOutparse();
+    public OutparseManager getNewBioboxFileOutparser(){
+        ParserGenerator outp = new ParserGenerator();
+        return outp.getNewBioboxOutparser();
+    }
+    
+    public AssemblerGenerator getNewAssemblerGenerator(){
+        return new AssemblerGenerator();
+    }
+    
+    public AssemblyEvaluationGenerator getNewAssemblyEvaluationGenerator(){
+        return new AssemblyEvaluationGenerator();
     }
 }

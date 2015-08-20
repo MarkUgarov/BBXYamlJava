@@ -1,2 +1,7 @@
 /BBXYamlJava/target/
 /.project
+/BBXYamlJava/nbactions.xml
+/BBXYamlJava/target/nb-configuration.xml
+/BBXYamlJava/biobox.yaml
+/BBXYamlJava/ApplicationList.yaml
+/BBXYamlJava/AssemblyEvaluationData.yaml

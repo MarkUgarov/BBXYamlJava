@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Mark Ugarov
  */
-public class FragmentSizeType extends AbstractType{
+public class FragmentSizeType extends BBXArgument{
                 
    private List<DataFormat> fragment_size;
 

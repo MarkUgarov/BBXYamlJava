@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package yamlparse.datatypes.bioboxdatas;
+package yamlparse.parser.abstracts;
 
 /**
  *
- * @author mugarov
+ * @author Mark
  */
-public abstract class BBXArgument {
+public class AbstractParser {
     
 }

@@ -5,6 +5,8 @@
  */
 package yamlparse;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.io.Serializable;
 import java.net.URL;
 import java.nio.file.Path;
 
@@ -15,14 +17,18 @@ import java.nio.file.Path;
  */
 public abstract class Constants {
     
-    // for the YamlInparse
-    public static final String INPUT_FILE_URL = "https://raw.githubusercontent.com/bioboxes/data/master/images.yml";
-    public static final String LOCAL_FILE_NAME= "ApplicationList.txt";
+    // for the YamlApplicationInparser
+    public static final String APPLICATIONS_INPUT_FILE_URL = "https://raw.githubusercontent.com/bioboxes/data/master/images.yml";
+    public static final String APPLICATIONS_LOCAL_FILE_NAME= "ApplicationList.yaml";
     
-    //for the YamlOutparse
+    //for the YamlBioboxfileOutparser
     public static final String BBX_VERSION = "0.9.0";
     public static final String BBX_FILE_NAME= "biobox.yaml";
-    public static final String[] VALID_FORMATS ={"fastq"};
-    public static final String[] VALID_TYPES = {"paired","unpaired"};
+    public static final String[] VALID_FORMATS ={"fastq", "fasta"};
+    public static enum FastType implements Serializable {paired, unpaired, scaffold, contig};
+
+    // for the YamlAssemblyEvaluationOutparser
+    public static final String ASSEMBLY_EVALUATION_FILE_URL = "https://raw.githubusercontent.com/bioboxes/rfc/master/container/assembly-evaluation/input_schema.yaml";
+    public static final String ASSEMBLY_EVALUATION_LOCAL_FILE_NAME= "AssemblyEvaluationData.yaml";
     
 }

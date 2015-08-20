@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package yamlparse.datatypes.bioboxdatas;
+package yamlparse.datatypes;
 
 /**
  *
- * @author mugarov
+ * @author Mark
  */
-public abstract class BBXArgument {
-    
+public abstract class ParseableType {
+    //@JsonIgnore 
+    public abstract String getString();
 }
