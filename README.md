@@ -85,7 +85,15 @@ into your .pom- file. Also do not forget to add your groupId and the version. It
       ...
 ~~~
 
-- Use mvn clean deploy (or just click "Clean and Build Project" in netbeans). 
+- Use "mvn clean deploy" on command line or use Netbeans like this:
+  - first go to the menu-point Tools -> Options
+  - click "Java" in the Register and then "Maven" below
+  - go to "Execution" and click on "Edit Global Custom Goal Definitions"
+  - click "add" and type anything like "Deploy" or whatever you desire
+  - click on "ok" and choose that Action in the list - then write "deploy" in the field for  "Executive Goals"
+  - click "ok", then "ok" again to close the Options
+  - rightclick on your Project in the Projects-Register (should be on the left side of your Netbeans)
+  - go to "Custom" and click "Deploy" (or however you named it)
 - Make a directory like #projectPath/hostdata you want to use for hosting (lets say it's the $HOST now). 
 - Then go to #projectPath/target/mvn-repo. There should be a directory structure underneath describing your groupId. Go deeper into that until you reach the maven-metadata - files. Copy all the files and directories in this directory into $HOST by using the replace-option.
 - If this is not your first version: Go back to $HOST and edit the maven-metadata.xml - file by adding all versionnumbers you shared in your $HOST in the <versioning> - section. 
