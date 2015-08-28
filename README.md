@@ -10,7 +10,7 @@ Go into your .pom - file and add
 ~~~XML
  <repository>
     <id>bbxyamljava-repository</id>
-    <url>https:/github.org/MarkUgarov/BBXYamlJava/raw/mvn-repo</url>
+    <url>https://github.org/MarkUgarov/BBXYamlJava/raw/mvn-repo</url>
 </repository>
 ~~~
 to the repositories-section. Also add
@@ -22,7 +22,7 @@ to the repositories-section. Also add
     <type>jar</type>
 </dependency>
 ~~~
-to the dependencies- section. Please check if there is a better version for you than v0.1.0 and just put its name in the version- element. 
+to the dependencies- section. Please check if there is a better version for you than v0.2.0 and just put its name in the version- element. 
 
 ## Step 2: How to use.
 
@@ -122,7 +122,7 @@ It could look like this if you also had an release:
  ~~~XML
  <repository>
     <id>anyID</id>
-    <url>https:/github.org/YOUR_ACCOUNT_NAME/YOUR_REPOSITORY_NAME/raw/YOUR_BRANCH_NAME</url>
+    <url>https://github.org/YOUR_ACCOUNT_NAME/YOUR_REPOSITORY_NAME/raw/YOUR_BRANCH_NAME</url>
 </repository>
 ~~~
 
