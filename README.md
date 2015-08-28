@@ -10,7 +10,7 @@ Go into your .pom - file and add
 ~~~XML
  <repository>
     <id>bbxyamljava-repository</id>
-    <url>https:/github.org/MarkUgarov/BBXYamlJava/raw/mvn-repo</url>
+    <url>https://github.org/MarkUgarov/BBXYamlJava/raw/mvn-repo</url>
 </repository>
 ~~~
 to the repositories-section. Also add
@@ -114,7 +114,7 @@ It could look like this if you also had an release:
  ~~~XML
  <repository>
     <id>anyID</id>
-    <url>https:/github.org/YOUR_ACCOUNT_NAME/YOUR_REPOSITORY_NAME/raw/YOUR_BRANCH_NAME</url>
+    <url>https://github.org/YOUR_ACCOUNT_NAME/YOUR_REPOSITORY_NAME/raw/YOUR_BRANCH_NAME</url>
 </repository>
 ~~~
 
