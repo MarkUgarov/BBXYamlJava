@@ -1,7 +1,7 @@
 # BBXYamlJava
 A Module originally planed for SITB. Converts particular .yaml-files (describing lists of applications) into abstract Java - objects and other particular Java - obects in biobox.yaml  - files.
 
-In this readme I will show you to integrate and use this package. After that, i will describe how to host your own project. 
+In this readme I will show you to integrate and use this package. After that, i will describe how to host your own project. 
 
 # Integration and useage 
 ## Step 1: How to integrate this package into a maven project.
@@ -22,7 +22,7 @@ to the repositories-section. Also add
     <type>jar</type>
 </dependency>
 ~~~
-to the dependencies- section. Please check if there is a better version for you than v0.1.0 and just put its name in the version- element. 
+to the dependencies- section. Please check if there is a better version for you than v0.2.0 and just put its name in the version- element. 
 
 ## Step 2: How to use.
 
