@@ -1,4 +1,4 @@
-[![Circle CI](https://circleci.com/gh/MarkUgarov/BBXYamlJava.svg?style=svg)](https://circleci.com/gh/MarkUgarov/BBXYamlJava)
+[![Circle CI](https://circleci.com/gh/MarkUgarov/BBXYamlJava/tree/master.svg?style=svg)](https://circleci.com/gh/MarkUgarov/BBXYamlJava/tree/master)
 
 # BBXYamlJava
 A Module originally planed for SITB. Converts particular .yaml-files (describing lists of applications) into abstract Java - objects and other particular Java - obects in biobox.yaml  - files.
