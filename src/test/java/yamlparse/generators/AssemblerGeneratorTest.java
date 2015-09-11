@@ -54,11 +54,10 @@ public class AssemblerGeneratorTest {
                         "arguments:\n" +
                         "- fastq:\n" +
                         "  - id: \"testID1\"\n" +
-                        "    type: \"paired\"\n" +
+                        "    type: \"unpaired\"\n" +
                         "    value: \"testValue1\"\n" +
                         "- fragment_size:\n" +
                         "  - id: \"testID2\"\n" +
-                        "    type: null\n" +
                         "    value: \"testValue2\"";
         //System.out.println(result);
         assertEquals(expected,result);
@@ -68,7 +67,7 @@ public class AssemblerGeneratorTest {
    private AssemblerGenerator generateTestTopType(){
         AssemblerGenerator instance = new AssemblerGenerator();
         instance.setFastqID("testID1");
-        instance.setFastqType(Constants.FastType.paired);
+        instance.setFastqType(Constants.FastType.unpaired);
         instance.setFastqValue("testValue1");
         
         instance.setFsID("testID2");
