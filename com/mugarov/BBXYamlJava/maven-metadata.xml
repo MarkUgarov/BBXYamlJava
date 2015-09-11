@@ -3,11 +3,12 @@
   <groupId>com.mugarov</groupId>
   <artifactId>BBXYamlJava</artifactId>
   <versioning>
-    <release>v0.2.0</release>
+    <release>v0.2.1</release>
     <versions>
-      <version>v0.2.0</version>
+      <version>v0.2.1</version>
+ <version>v0.2.0</version>
   <version>v0.1.0</version>
-   </versions>
-    <lastUpdated>20150820133058</lastUpdated>
+    </versions>
+    <lastUpdated>20150911113819</lastUpdated>
   </versioning>
 </metadata>

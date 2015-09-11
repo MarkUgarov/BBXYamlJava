@@ -22,14 +22,7 @@ import yamlparse.parser.Manager.OutparseManager;
  * @author Mark
  */
 public class AssemblyEvaluationGenerator {
-//    "version: \"0.9.0\"\n" +
-//                        
-//                        "- fasta:\n"+
-//                        "  - id: \"testID3\"\n"+
-//                        "    type: \"unpaired\"\n"+
-//                        "    value: \"testPath\"\n"+
-//                        "- fasta_dir: \"TestDir\"\n"+
-//                        "- cache: \"noCache\"";
+
     
     private String version;
     
