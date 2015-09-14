@@ -35,6 +35,8 @@ public class AssemblerGenerator {
     private OutparseManager outParsMan;
     private String outputPath;
     
+    private boolean shuffled;
+    
     public AssemblerGenerator(){
         this.version = "0.9.0";
         // set default atom types
@@ -50,7 +52,7 @@ public class AssemblerGenerator {
         this.fsValue = null;
         this.fsValue2 = null;
         
-        
+        this.shuffled = false;
         
         // generate a parser in advance
         this.outParsMan = new OutparseManager(Constants.BBX_FILE_NAME, new BioboxfileOutparser());
@@ -66,7 +68,7 @@ public class AssemblerGenerator {
        df1.setType(this.fastqType);
        df1.setValue(this.fastqValue);
        dataList1.add(df1);
-       if(this.fastqType.equals(FastType.paired)){
+       if(this.fastqType.equals(FastType.paired) && this.shuffled){
            DataFormat df12 = new DataFormat();
            df12.setId(this.fastqID2);
            df12.setValue(this.fastqValue2);
@@ -84,7 +86,7 @@ public class AssemblerGenerator {
             df2.setId(this.fsID);
             df2.setValue(this.fsValue);
             dataList2.add(df2);
-            if(this.fastqType.equals(FastType.paired)){
+            if(this.fastqType.equals(FastType.paired)&& this.shuffled){
                 DataFormat df22 = new DataFormat();
                 df22.setValue(this.fsValue2);
                 df22.setId(this.fsID2);
@@ -224,5 +226,16 @@ public class AssemblerGenerator {
         this.fsValue2 = fsValue2;
     }
     
+    public void setShuffled(){
+        this.shuffled = true;
+    }
+    
+    public void setUnshuffled(){
+        this.shuffled = false;
+    }
+    
+    public boolean isShuffled(){
+        return this.shuffled;
+    }
    
 }
