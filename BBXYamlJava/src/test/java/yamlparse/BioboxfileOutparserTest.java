@@ -69,7 +69,7 @@ public class BioboxfileOutparserTest {
                         "arguments:\n" +
                         "- fastq:\n" +
                         "  - id: \"testID1\"\n" +
-                        "    type: \"unpaired\"\n" +
+                        "    type: \"paired\"\n" +
                         "    value: \"testValue1\"\n" +
                         "- fragment_size:\n" +
                         "  - id: \"testID2\"\n" +
@@ -91,7 +91,7 @@ public class BioboxfileOutparserTest {
         List<DataFormat> dfList1= new ArrayList<>();
         DataFormat df1 = new DataFormat(); 
         df1.setId("testID1");
-        df1.setType(FastType.unpaired);
+        df1.setType(FastType.paired);
         df1.setValue("testValue1");
         dfList1.add(df1);
         fq.setFastq(dfList1);
