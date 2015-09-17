@@ -12,7 +12,7 @@ Go into your .pom - file and add
 ~~~XML
  <repository>
     <id>bbxyamljava-repository</id>
-    <url>https://github.org/MarkUgarov/BBXYamlJava/raw/mvn-repo</url>
+    <url>https://github.com/MarkUgarov/BBXYamlJava/raw/mvn-repo</url>
 </repository>
 ~~~
 to the repositories-section. Also add
