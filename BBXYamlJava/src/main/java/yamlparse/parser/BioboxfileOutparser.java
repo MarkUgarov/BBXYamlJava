@@ -6,7 +6,6 @@
 package yamlparse.parser;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
@@ -49,9 +48,9 @@ public class BioboxfileOutparser extends AbstractOutParser{
 
             YAMLFactory factory = new YAMLFactory();
             ObjectMapper yamlmap = new ObjectMapper(factory);
-
-            
-            yamlmap.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+                
+                yamlmap.configure(SerializationFeature.WRITE_NULL_MAP_VALUES, false);
+                yamlmap.setSerializationInclusion(JsonInclude.Include.NON_NULL);
             FileOutputStream fos = new FileOutputStream(localFile);
 
             factory.createGenerator(fos).writeObject(bbxType);
