@@ -6,12 +6,10 @@
 package yamlparse.generators;
 
 import yamlparse.Constants;
-import yamlparse.parser.abstracts.AbstractParseManager;
 import yamlparse.parser.Manager.InparseManager;
 import yamlparse.parser.ApplicationsInparser;
 import yamlparse.parser.BioboxfileOutparser;
 import yamlparse.parser.Manager.OutparseManager;
-import yamlparse.parser.abstracts.AbstractOutParser;
 
 
 /**
@@ -20,16 +18,26 @@ import yamlparse.parser.abstracts.AbstractOutParser;
  */
 public class ParserGenerator {
     /**
-     * This class generates AbstractParseManager for specific applications. 
+     * This class generates AbstractParseManager for specific applications
+     * or BioboxOutparser for biobox.yaml-files. 
      */
     public ParserGenerator(){
         
     }
     
-    public InparseManager getNewApplicationInparser(){
+    /**
+     * Returns an ApplicationInparser.
+     * @return a 
+     */
+        public InparseManager getNewApplicationInparser(){
         return new InparseManager(Constants.APPLICATIONS_LOCAL_FILE_NAME, Constants.APPLICATIONS_INPUT_FILE_URL, new ApplicationsInparser());
     }
     
+    /**
+     * Gets a BioboxOutparser. This is very clumsy, better use Generators 
+     * unless you want to implement your own ParseableType.
+     * @return 
+     */
     public OutparseManager getNewBioboxOutparser(){
         return new OutparseManager(Constants.BBX_FILE_NAME, new BioboxfileOutparser());
     }

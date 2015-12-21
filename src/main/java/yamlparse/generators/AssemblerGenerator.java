@@ -86,7 +86,7 @@ public class AssemblerGenerator {
             df2.setId(this.fsID);
             df2.setValue(this.fsValue);
             dataList2.add(df2);
-            if(this.fastqType.equals(FastType.paired)&& this.shuffled &&this.fsValue2!= null&& this.fsID2!=null){
+            if(this.fastqType.equals(FastType.paired)&& this.shuffled){
                 DataFormat df22 = new DataFormat();
                 df22.setValue(this.fsValue2);
                 df22.setId(this.fsID2);
@@ -105,11 +105,9 @@ public class AssemblerGenerator {
        top.setVersion(this.version);
        ArrayList<BBXArgument> args = new ArrayList<>();
        args.add(fastq);
-       if(fragSize!=null){
-           args.add(fragSize);
-       }
-       
+       args.add(fragSize);
        top.setArguments(args);
+       
        //configure the output-path and name
        if (this.outputPath != null){
            this.outParsMan.setOutputPath(outputPath);

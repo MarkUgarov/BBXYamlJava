@@ -46,12 +46,15 @@ public class InparseManager extends AbstractParseManager{
     private AbstractInParser inparser;
    
     /**
-     * Can be intantiated with two parameters.
+     * You might check if you want to use methods of the ParserGenerator 
+     * instead of using this constructor with manual parameters.
      * @param path for the path where the local file will be created if you use
      * updateFile() and where the data will be read from in case you use 
      * readFile()
      * @param url for the online source where the data will be read from if you 
      * use updateFile() 
+     * @param inp is an AbstractInParser, mostl likely it should be an 
+     * ApplicationsInparser
      */
     public InparseManager(String path, String url, AbstractInParser inp){
         this.localPath = path;
@@ -61,10 +64,12 @@ public class InparseManager extends AbstractParseManager{
         this.inparser = inp;
     }
     
-    /**
-     * Can be intantiated without parameters - don't forget to set the 
- the url before updating and/or the path before reading  and/or the
- yamlString before parsing seperatly AND set an AbstractInParser.
+    /**You might check if you want to use methods of the ParserGenerator 
+     * instead of using this constructor with manual parameters.
+     * This is how InparseManager can be intantiated without parameters - don't 
+     * forget to set the  the url before updating and/or the path before reading
+     * and/or the yamlString before parsing seperatly AND set an 
+     * AbstractInParser if you call this constructor. 
      */
      public InparseManager() {
         this.localPath = null;
@@ -74,6 +79,12 @@ public class InparseManager extends AbstractParseManager{
         this.inparser = null;
     }
     
+     /**
+      * This will parse the current yamlString into a ParseableType, but
+      * - if no String is set the readFile() - method is invoked
+      * - if the file is empty the updateFile() - method is invoked.
+      * You might have to use the updateFile() - method before parsing.
+      */
     @Override
     public void parse(){ 
         if(this.yamlString== null){
@@ -122,7 +133,7 @@ public class InparseManager extends AbstractParseManager{
     
     /**
      * This will read from the url you set and set its content for the String
-     * which will be parsed if you use parse() later on. 
+     * yamlString which will be parsed if you use parse() later on. 
      * Be careful: It will overwrite the current file on the local path. You
      * can change the path with the setlocalPath(String ...)- method. 
      */
@@ -180,6 +191,10 @@ public class InparseManager extends AbstractParseManager{
         return parseResults;
     }
     
+    /**
+     * This will
+     * @return 
+     */
     @Override
     public String getString(){
         if(this.parseResults==null){
@@ -199,6 +214,10 @@ public class InparseManager extends AbstractParseManager{
         this.inparser = inparser;
     }
 
+    /**
+     * 
+     * @param parser must be an AbstractInParser!
+     */
     @Override
     public void setParser(AbstractParser parser) {
         this.inparser = (AbstractInParser) parser;

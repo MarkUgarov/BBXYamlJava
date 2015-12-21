@@ -5,7 +5,6 @@
  */
 package yamlparse.parser.abstracts;
 
-import java.io.File;
 import yamlparse.datatypes.ParseableType;
 
 
@@ -14,5 +13,11 @@ import yamlparse.datatypes.ParseableType;
  * @author Mark
  */
 public abstract class AbstractOutParser extends AbstractParser {
+
+    /**
+     * Should 
+     * @param outputPath
+     * @param topType
+     */
     public abstract void parse(String outputPath, ParseableType topType );
 }
