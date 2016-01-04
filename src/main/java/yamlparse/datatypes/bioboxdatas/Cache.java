@@ -9,7 +9,7 @@ package yamlparse.datatypes.bioboxdatas;
  *
  * @author Mark
  */
-public class Cache extends BBXArgument{
+public class Cache implements BBXArgument{
     
     private String cache;
 

@@ -27,7 +27,7 @@ public class ApplicationFlattener {
         this.init();
     }
     
-    public void init(){
+    private void init(){
         this.ass = new ArrayList<>();
         this.flatAssemblers();
     }

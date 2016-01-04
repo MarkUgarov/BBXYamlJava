@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Mark
  */
-public class FastaType extends BBXArgument{
+public class FastaType implements BBXArgument{
      private List<DataFormat> fasta;
 
     public List<DataFormat> getFasta() {

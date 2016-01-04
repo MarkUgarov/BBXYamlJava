@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This is a more general kind of 
  */
 package yamlparse.generators;
 
@@ -26,17 +24,21 @@ public class ParserGenerator {
     }
     
     /**
-     * Returns an ApplicationInparser.
-     * @return a 
+     * Does not return an instance of ApplicationsInparser (there is an
+     * "s" in the middle), but a InparseManager to parse in Applications.
+     * @return an InparseManager with standard parameters to parse in a
+     * file containing Applications
+     * 
      */
-        public InparseManager getNewApplicationInparser(){
+    public InparseManager getNewApplicationInparser(){
         return new InparseManager(Constants.APPLICATIONS_LOCAL_FILE_NAME, Constants.APPLICATIONS_INPUT_FILE_URL, new ApplicationsInparser());
     }
     
     /**
-     * Gets a BioboxOutparser. This is very clumsy, better use Generators 
+     * Gets a BioboxOutparser; this is very clumsy, better use Generators 
      * unless you want to implement your own ParseableType.
-     * @return 
+     * @return a OutparseManager with standard parameters to parse out an
+     * instance of BioboxTopType into a biobox.yaml - file
      */
     public OutparseManager getNewBioboxOutparser(){
         return new OutparseManager(Constants.BBX_FILE_NAME, new BioboxfileOutparser());

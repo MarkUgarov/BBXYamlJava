@@ -82,7 +82,7 @@ public class OutparseManager extends AbstractParseManager{
     }
 
     /**
-     * To set a new AbstractParser (usually a BioboxfileOutparser which will
+     * To set a new AbstractParser (usually a BioboxfileOutparser) which will
      * be used to parse. 
      * @param parser must be an AbstractOutParser!
      */

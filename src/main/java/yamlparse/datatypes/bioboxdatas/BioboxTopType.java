@@ -13,7 +13,7 @@ import yamlparse.datatypes.ParseableType;
  *
  * @author Mark Ugarov
  
-  * Data structure of this package:
+  * Data structure of this package (adapted for assemblers):
                         _________
                         |BioboxTopType|
                             |
@@ -35,7 +35,7 @@ import yamlparse.datatypes.ParseableType;
          |DataFormat|             |DataFormat|
  * 
  */
-public class BioboxTopType extends ParseableType{
+public class BioboxTopType implements ParseableType{
     private String version;
     private List<BBXArgument> arguments;
 

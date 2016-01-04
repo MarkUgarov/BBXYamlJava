@@ -45,7 +45,7 @@ public class BioboxfileOutparser extends AbstractOutParser{
      * Parsing a ParseableType into a file described by an outputPath
      * @param outputPath is the path where to parse to - please check validity
      * by yourself
-     * @param abstractTop should be a ParseableType like BioboxTopType
+     * @param abstractTop should be a BioboxTopType
      */
     @Override
     public void parse(String outputPath, ParseableType abstractTop) {

@@ -6,7 +6,6 @@
 package yamlparse.generators;
 
 import java.util.ArrayList;
-import java.util.List;
 import yamlparse.Constants;
 import yamlparse.datatypes.bioboxdatas.BBXArgument;
 import yamlparse.datatypes.bioboxdatas.BioboxTopType;
@@ -22,14 +21,6 @@ import yamlparse.parser.Manager.OutparseManager;
  * @author Mark
  */
 public class AssemblyEvaluationGenerator {
-//    "version: \"0.9.0\"\n" +
-//                        
-//                        "- fasta:\n"+
-//                        "  - id: \"testID3\"\n"+
-//                        "    type: \"unpaired\"\n"+
-//                        "    value: \"testPath\"\n"+
-//                        "- fasta_dir: \"TestDir\"\n"+
-//                        "- cache: \"noCache\"";
     
     private String version;
     
@@ -45,7 +36,7 @@ public class AssemblyEvaluationGenerator {
     private OutparseManager outParsMan;
     
     public AssemblyEvaluationGenerator(){
-        this.version = "0.9.0";
+        this.version = Constants.BBX_VERSION;
         this.fastaID = null;
         this.fastaType = null;
         this.fastaValue= null;
@@ -54,7 +45,9 @@ public class AssemblyEvaluationGenerator {
         this.outputPath = null;
         this.outParsMan = new OutparseManager(Constants.BBX_FILE_NAME, new BioboxfileOutparser());
     }
-    
+    /**
+     * Writes the current set of data to a file with the set outputpath.
+     */
     public void write(){
        // generating the fasta- part
        FastaType fasta = new FastaType();
@@ -92,30 +85,59 @@ public class AssemblyEvaluationGenerator {
        this.outParsMan.parse();
     }
 
+    /**
+     * Sets the bioboxes-version.
+     * @param version should be something like X.Y.Z (0.9.0 is default)
+     */
     public void setVersion(String version) {
         this.version = version;
     }
 
+    /**
+     * Sets the ID of the fasta file.
+     * @param fastaID can be any string and is null at default
+     */
     public void setFastaID(String fastaID) {
         this.fastaID = fastaID;
     }
 
+    /**
+     * Sets the type of the fasta. 
+     * @param fastaType should be "scaffold" or "contig" .
+     */
     public void setFastaType(Constants.FastType fastaType) {
         this.fastaType = fastaType;
     }
 
+    /**
+     * Sets the value of the fasta file. 
+     * @param fastaValue should be a valid path of an existing fasta file. 
+     */
     public void setFastaValue(String fastaValue) {
         this.fastaValue = fastaValue;
     }
 
+    /**
+     * Sets the directory of fasta-files. 
+     * @param fastaDir should be the path or the parent directory of fasta-files
+     */
     public void setFastaDir(String fastaDir) {
         this.fastaDir = fastaDir;
     }
 
+    /**
+     * Sets the cache. Should be dpendend on the working system. 
+     * @param cache will be null at default 
+     */
     public void setCache(String cache) {
         this.cache = cache;
     }
 
+    /**
+     * Sets the path whre to write this file by using the write()-method. 
+     * @param outputPath should be a valid path to a file which will be created
+     * by using write()
+     */
     public void setOutputPath(String outputPath) {
         this.outputPath = outputPath;
     }

@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This class is implemented to manage a file to parse from. 
  */
 package yamlparse.parser.Manager;
 
@@ -50,11 +48,13 @@ public class InparseManager extends AbstractParseManager{
      * instead of using this constructor with manual parameters.
      * @param path for the path where the local file will be created if you use
      * updateFile() and where the data will be read from in case you use 
-     * readFile()
+     * readFile(), should not be null (use instances of AbstractInparser to 
+     * parse a raw String)
      * @param url for the online source where the data will be read from if you 
-     * use updateFile() 
-     * @param inp is an AbstractInParser, mostl likely it should be an 
-     * ApplicationsInparser
+     * use updateFile(), can be null
+     * @param inp is an AbstractInParser, most likely it should be an 
+     * ApplicationsInparser, but at least make sure it fits the implementation
+     * of ParseableType described by the file
      */
     public InparseManager(String path, String url, AbstractInParser inp){
         this.localPath = path;
@@ -83,7 +83,9 @@ public class InparseManager extends AbstractParseManager{
       * This will parse the current yamlString into a ParseableType, but
       * - if no String is set the readFile() - method is invoked
       * - if the file is empty the updateFile() - method is invoked.
-      * You might have to use the updateFile() - method before parsing.
+      * You might have to use the updateFile() - method before parsing in case
+      * the file (on the url) has changed or you changed the url itself since 
+      * the last call of updateFile().
       */
     @Override
     public void parse(){ 
@@ -120,6 +122,10 @@ public class InparseManager extends AbstractParseManager{
         return this.localPath;
     }
     
+    /**
+     * Reads the file described by the local path. Does not update the file and 
+     * and does not parse. 
+     */
     public void readFile(){
          byte[] encoded;
         try {
@@ -183,17 +189,29 @@ public class InparseManager extends AbstractParseManager{
         return webURLString;
     }
 
+    /**
+     * Should not be used at default, use ParserGenerator to invoke this class
+     * with standard parameters. 
+     * Sets the url where to download the file by updateFile().
+     * @param webURLString should be a valid url (as String)
+     */
     public void setWebURLString(String webURLString) {
         this.webURLString = webURLString;
     }
 
+    /**
+     * Before usage:
+     * @return a ParseableType - please cast to the correct implementation 
+     * of the ParseableType-interface by yourself
+     */
     public ParseableType getParseResults() {
         return parseResults;
     }
     
     /**
-     * This will
-     * @return 
+     * This returns a default String if you didn't parse a valid file (or 
+     * String)before.
+     * @return the String of the parsed result
      */
     @Override
     public String getString(){
@@ -210,6 +228,12 @@ public class InparseManager extends AbstractParseManager{
         return inparser;
     }
 
+    /**
+     * Should not be used at default, use ParserGenerator to invoke this class
+     * with standard parameters. 
+     * @param inparser can be any AbstractInParser, but make sure it fits to 
+     * the implementation of ParseableType described by the file
+     */
     public void setInparser(AbstractInParser inparser) {
         this.inparser = inparser;
     }
