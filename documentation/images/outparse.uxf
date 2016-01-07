@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>11</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>110</x>
+      <y>275</y>
+      <w>297</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>*BBXYamlJava*
+
+--
+*getNewApplicationInparser()*
+
+getNewBioboxFileOutparser()
+
+*getNewAssemblerGenerator()*
+
+*getNewAssemblyEvaluationGenerator()*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>990</x>
+      <y>11</y>
+      <w>286</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>OutparseManager
+/extends /
+/AbstractParseManager/
+--
+@Override
+- parse()
+- getString() [not supported]
+--
+/Configuration (optional)/
+- setOutputPath(String outputPath)
+- getOutputPath()
+- setToptype(BioboxTopType toptype)
+- setParser(AbstractParser parser)
+
+
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>143</x>
+      <y>726</y>
+      <w>363</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>AbstractOutParser
+/extends/
+/AbstractParser/
+--
+- parse(String outputPath, ParseableType topType)
+
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>110</x>
+      <y>88</y>
+      <w>1221</w>
+      <h>737</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+invokes
+</panel_attributes>
+    <additional_attributes>30.0;650.0;10.0;650.0;10.0;560.0;1090.0;560.0;1090.0;10.0;1060.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>660</x>
+      <y>726</y>
+      <w>385</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>BioboxfileOutparser
+/extends/
+/AbstractOutParser/
+--
+- parse(String outputPath, ParseableType abstractTop)
+- getPath()
+
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>495</x>
+      <y>726</y>
+      <w>187</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+extends</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>473</x>
+      <y>11</y>
+      <w>363</w>
+      <h>451</h>
+    </coordinates>
+    <panel_attributes>AssemblerGenerator
+
+--
+- setVersion(String version)
+- isShuffled()
+*- write()*
+--
+/for unpaired or shuffled paired/
+*- setFastqID(String fastqID)*
+*- setFastqType(FastType fastqType)*
+*- setFastqValue(String fastqValue)*
+- setFsID(String fsID)
+*- setFsValue(String fsValue)*
+- setOutParsMan(OutparseManager outParsMan)
+*- setOutputPath(String outputPath)*
+*- setShuffled()*
+--
+/for unshuffled paired/
+- getFastqID2()
+*- setFastqID2(String fastqID2)*
+- getFastqValue2()
+*- setFastqValue2(String fastqValue2)*
+- getFsID2()
+- setFsID2(String fsID2)	
+- getFsValue2()
+*- setFsValue2(String fsValue2)*
+- setUnshuffled()
+
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>825</x>
+      <y>0</y>
+      <w>187</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+invokes
+&lt;&lt;with standard 
+parametrs including 
+BioboxfileOutparser&gt;&gt;</panel_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>825</x>
+      <y>77</y>
+      <w>187</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+invokes
+&lt;&lt;with 
+ParseableType&gt;&gt;</panel_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>473</x>
+      <y>473</y>
+      <w>363</w>
+      <h>209</h>
+    </coordinates>
+    <panel_attributes>AssemblyEvaluationGenerator
+
+--
+- setVersion(String version)
+*- write()*
+*- setFastaID(String fastaID)*
+*- setFastaType(Constants.FastType fastaType)*
+*- setFastaValue(String fastaValue)*
+*- setFastaDir(String fastaDir)*
+*- setCache(String cache)*
+*- setOutputPath(String outputPath) *
+
+
+
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>825</x>
+      <y>220</y>
+      <w>495</w>
+      <h>297</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+invokes
+&lt;&lt;with standard parametrs
+including BioboxfileOutparser&gt;&gt;
+</panel_attributes>
+    <additional_attributes>240.0;10.0;240.0;250.0;10.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>825</x>
+      <y>88</y>
+      <w>264</w>
+      <h>473</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+
+
+invokes
+&lt;&lt;with ParseableType&gt;&gt;
+</panel_attributes>
+    <additional_attributes>150.0;10.0;10.0;410.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>396</x>
+      <y>429</y>
+      <w>99</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+invokes</panel_attributes>
+    <additional_attributes>70.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>132</x>
+      <y>968</y>
+      <w>440</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>BioboxTopType
+/implements/
+/ParseableType/
+--
+/used to parse biobox-files/
+/to parse: first level/
+--
+@Override
+- getString()[not useful]
+--
+- getVersion()
+- setVersion(String version)
+- getArguments()
+- setArguments(List&lt;BBXArgument&gt; arguments)
+
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>275</x>
+      <y>847</y>
+      <w>143</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>/interface/
+ParseableType
+--
+-getString()
+
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>330</x>
+      <y>913</y>
+      <w>110</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+implements</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;48.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>352</x>
+      <y>1254</y>
+      <w>154</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>/interface/
+BBXArgument
+
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>627</x>
+      <y>990</y>
+      <w>286</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>FastqType
+/implements/
+/BBXArgument/
+--
+/used for Assembler biobox-files/
+/to parse: second level/
+--
+- getFastq()
+- setFastq(List&lt;DataFormat&gt; fastq)
+
+bg=light_gray
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>935</x>
+      <y>990</y>
+      <w>440</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>FragmentSizeType
+/implements/
+/BBXArgument/
+--
+/used for Assembler biobox-files/
+/is optional/
+/to parse: second level/
+--
+- getFragment_size() 
+- setFragment_size(List&lt;DataFormat&gt; fragment_size)
+
+bg=light_gray
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>143</x>
+      <y>1408</y>
+      <w>242</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>FastaType
+/implements/
+/BBXArgument/
+--
+/used for AssemblyEvaluation/
+/biobox-files/
+/to parse: second level/
+--
+- getFasta()
+- setFasta(List&lt;DataFormat&gt; fasta)
+
+bg=light_gray
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>407</x>
+      <y>1408</y>
+      <w>264</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>Fasta_DirType
+/implements/
+/BBXArgument/
+--
+/used for AssemblyyEvaluation/
+/biobox-files/
+/to parse: second level/
+--
+- getFasta_dir()
+- setFasta_dir(String fasta_dir) 
+
+bg=light_gray
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>726</x>
+      <y>1408</y>
+      <w>264</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>Cache
+/implements/
+/BBXArgument/
+--
+/used for AssemblyEvaluation/
+/biobox-files/
+/to parse: second level/
+--
+- getCache()
+- setCache(String cache)
+
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>495</x>
+      <y>1122</y>
+      <w>209</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+implements</panel_attributes>
+    <additional_attributes>10.0;130.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>363</x>
+      <y>1177</y>
+      <w>99</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+holds
+list of</panel_attributes>
+    <additional_attributes>60.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>253</x>
+      <y>1287</y>
+      <w>231</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+implements</panel_attributes>
+    <additional_attributes>190.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>495</x>
+      <y>1276</y>
+      <w>363</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+implements</panel_attributes>
+    <additional_attributes>10.0;10.0;310.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>473</x>
+      <y>1287</y>
+      <w>121</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+implements</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>495</x>
+      <y>1144</y>
+      <w>605</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+implements</panel_attributes>
+    <additional_attributes>10.0;120.0;530.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1012</x>
+      <y>1298</y>
+      <w>275</w>
+      <h>209</h>
+    </coordinates>
+    <panel_attributes>DataFormat
+--
+/used for Assembler and/
+/AssemblyEvaluation biobox-files/
+/to parse: third level/
+--
+- getId() [returns String]
+- setId(String id)
+- setId(int id)
+- getType() 
+- setType(FastType[enum] type) 
+- getValue()
+- setValue(String value)
+
+bg=light_gray
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>748</x>
+      <y>1122</y>
+      <w>286</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+holds
+list of</panel_attributes>
+    <additional_attributes>240.0;180.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1122</x>
+      <y>1144</y>
+      <w>88</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+holds
+list of</panel_attributes>
+    <additional_attributes>10.0;140.0;50.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>319</x>
+      <y>1320</y>
+      <w>715</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+holds
+list of</panel_attributes>
+    <additional_attributes>630.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>407</x>
+      <y>814</y>
+      <w>517</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=..&gt;
+is written by</panel_attributes>
+    <additional_attributes>10.0;50.0;450.0;50.0;450.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1034</x>
+      <y>770</y>
+      <w>110</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+writes 
+into</panel_attributes>
+    <additional_attributes>10.0;20.0;80.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1122</x>
+      <y>759</y>
+      <w>187</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>File 
+/describing one instance/
+/of BioboxTopType /
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>473</x>
+      <y>814</y>
+      <w>759</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>lt=..&gt;
+describes</panel_attributes>
+    <additional_attributes>670.0;10.0;10.0;138.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>396</x>
+      <y>22</y>
+      <w>110</w>
+      <h>407</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+invokes</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;350.0</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>132</x>
+      <y>935</y>
+      <w>1243</w>
+      <h>627</h>
+    </coordinates>
+    <panel_attributes>bt=.
+data structure
+(currently: to parse from)
+bg=cyan
+layer=-2</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

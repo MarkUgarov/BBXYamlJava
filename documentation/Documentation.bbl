@@ -1,0 +1,116 @@
+% $ biblatex auxiliary file $
+% $ biblatex version 2.5 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\entry{AssemblerList}{online}{}
+  \field{sortinit}{A}
+  \field{title}{{Assembler List} Git Raw}
+  \verb{url}
+  \verb https://raw.githubusercontent.com/bioboxes/data/master/images.yml
+  \endverb
+  \field{year}{2015}
+  \field{urlday}{08}
+  \field{urlmonth}{10}
+  \field{urlyear}{2015}
+\endentry
+
+\entry{BioBoxes}{online}{}
+  \field{sortinit}{B}
+  \field{title}{{Bioboxes} homepage}
+  \verb{url}
+  \verb bioboxes.org
+  \endverb
+  \field{year}{2015}
+  \field{urlday}{08}
+  \field{urlmonth}{11}
+  \field{urlyear}{2015}
+\endentry
+
+\entry{BOCCS}{online}{}
+  \field{sortinit}{B}
+  \field{title}{{BOCCS - The Biological Online Computational Cluster Service}
+  Git Repository}
+  \verb{url}
+  \verb https://github.com/staynerzone/BioboxSITBSources
+  \endverb
+  \field{year}{2015}
+  \field{urlday}{08}
+  \field{urlmonth}{10}
+  \field{urlyear}{2015}
+\endentry
+
+\entry{BBXYamlJava}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {MarkUgarov}{M.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{M1}
+  \strng{fullhash}{M1}
+  \field{sortinit}{M}
+  \field{title}{{BBXYamlJava} Git Repository}
+  \verb{url}
+  \verb https://github.com/MarkUgarov/BBXYamlJava
+  \endverb
+  \field{year}{2015}
+  \field{urlday}{08}
+  \field{urlmonth}{10}
+  \field{urlyear}{2015}
+\endentry
+
+\entry{Netbeans}{online}{}
+  \field{sortinit}{N}
+  \field{title}{{Netbeans} homepage}
+  \verb{url}
+  \verb https://raw.githubusercontent.com/bioboxes/data/master/images.yml
+  \endverb
+  \field{urlday}{05}
+  \field{urlmonth}{01}
+  \field{urlyear}{2016}
+\endentry
+
+\entry{ObjectMapper}{online}{}
+  \field{sortinit}{O}
+  \field{title}{{Object Mapper} description}
+  \verb{url}
+  \verb http://fasterxml.github.io/jackson-databind/javadoc/2.2.0/com/fasterxml
+  \verb /jackson/databind/ObjectMapper.htmll
+  \endverb
+  \field{year}{2015}
+  \field{urlday}{08}
+  \field{urlmonth}{10}
+  \field{urlyear}{2015}
+\endentry
+
+\entry{Umlet}{online}{}
+  \field{sortinit}{U}
+  \field{title}{{UMLet} homepage}
+  \verb{url}
+  \verb bioboxes.org
+  \endverb
+  \field{year}{2015}
+  \field{urlday}{05}
+  \field{urlmonth}{01}
+  \field{urlyear}{2015}
+\endentry
+
+\lossort
+\endlossort
+
+\endinput
