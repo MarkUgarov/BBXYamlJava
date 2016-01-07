@@ -1,6 +1,6 @@
 /**
  * This package is used by the class YamlOutparse.
- *  Data structure of this package:
+ *  Data structure of this package (adapted for Asssemblers)
  *                        _________
  *                        |TopType|
  *                            |

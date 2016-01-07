@@ -8,11 +8,13 @@ package yamlparse.datatypes.applications;
 import java.util.List;
 
 /**
- *
+ * Care: This class holds values describing a biobox containing an assembler, 
+ * don't confuse with AssemblerGenerator (which can generate a biobox-file for
+ * the usage of the described assembler).
  * @author Mark
  */
 
-public class Assembler extends Applications{
+public class Assembler{
     
     private ImageType image;
         

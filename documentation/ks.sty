@@ -1,0 +1,125 @@
+%
+% ks.sty
+% KS-Stylesheet for bachelor and master thesis
+% 
+% author: Martin Flasskamp
+% last change: 2014-06-20
+% last change: 2014-06-25 by Timo Korthals
+%
+% NO EDITS REQUIRED IN THIS FILE
+%
+
+
+\usepackage{etex}
+\reserveinserts{28}
+
+\KOMAoptions{BCOR=10mm} % Bindekorrektur
+\renewcommand{\baselinestretch}{1.1}
+\parindent0mm
+\parskip2mm plus1.5pt minus1.5pt
+% Fix \float@addtolists warnings (KOMA has own float implementation)
+\usepackage{scrhack}
+
+\usepackage{tocbasic}
+
+% variable declartion for cover sheet
+% override in main tex file:
+%	\renewcommand{\thesisAuthor}{Paul Panther}
+\newcommand{\thesisAuthor}[1][Paul Panther]{#1}
+\newcommand{\thesisStudNum}[1][1234567]{#1}
+\newcommand{\thesisTitle}[1][Lorem ipsum Dolor sit amet consetetur Sadipscing Elitr sed Diamnonumy]{#1}
+\newcommand{\thesisDate}[1][Bielefeld, Juni 2014]{#1}
+\newcommand{\thesisId}[1][B~00]{#1}
+\newcommand{\thesisType}[1][Bachelorarbeit]{#1}
+\newcommand{\thesisCourse}[1][Naturwissenschaftliche Informatik]{#1}
+\newcommand{\thesisSupervisor}[1][Dipl.-Ing.~Max~Mustermann\\Dipl.-Ing.~Erika~Mustermann]{#1}
+
+% Farben
+\usepackage{color}
+\definecolor{ksorange}{RGB}{245,159,0}
+% todo: all ks colors
+
+% Encoding
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Schrift
+%\usepackage{lmodern}
+\usepackage{helvet}
+\usepackage{charter}
+\usepackage[bitstream-charter]{mathdesign}
+
+\usepackage[english]{babel}	
+%\usepackage[ngerman]{babel}	
+\usepackage{microtype}			% improved typography
+%\usepackage{ucs}
+
+%\usepackage{bibgerm} 
+\usepackage[style=numeric-verb , backend=bibtex]{biblatex}
+\addbibresource{literatur.bib}
+\usepackage{url}
+
+% Grafik
+\usepackage{graphicx}
+
+% TikZ (Check out http://www.texample.net/)
+\usepackage{tikz}
+\usepackage[europeanresistors,americaninductors]{circuitikz} % Only for circuits
+\usepackage{tikz-timing}
+
+% Formeln
+%\usepackage{mathabx} % Wirft Fehler wenn amsmath auch aktiviert ist!
+%\usepackage{amssymb} % Not necessary with \usepackage[bitstream-charter]{mathdesign}
+\usepackage{amsmath} % Necessary for inline math
+\usepackage{units}
+\usepackage{icomma} % for comma as decimal seperation in \unit
+
+% sans-serif font in all float objects
+\usepackage[font=sf]{floatrow}
+
+% Tabellen
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{rotating}
+\floatsetup[table]{capposition=top}
+
+% Quellcode
+\usepackage{listings}
+\lstloadlanguages{C,VHDL}
+
+% mehrere Bilder auf eine Seite setzen
+\setcounter{topnumber}{5}
+\setcounter{bottomnumber}{5}
+\setcounter{totalnumber}{10}
+
+% vermeidet Witwen und Schusterjungen
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+% setzen der Tiefe der Bezifferung von Untergliederungen
+\setcounter{secnumdepth}{3}
+% setzen der Aufnahmetiefe ins Inhaltsverzeichnis
+\setcounter{tocdepth}{2}
+
+% Zusätzliche Kommandos
+\newcommand{\exph}[1]{\ensuremath{\mathord{\mathrm{e^{\mathnormal{#1}}}}}}
+
+% Create PDF version 1.6 (and not a old version)
+\pdfminorversion=6
+% links and table of content in PDF
+\AtBeginDocument{
+  \hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  filecolor=black,
+  menucolor=black,
+  urlcolor=black,
+  pdftitle={\thesisTitle},
+  pdfauthor={\thesisAuthor},
+  }
+}
+\usepackage{hyperref}

@@ -9,6 +9,6 @@ package yamlparse.datatypes.bioboxdatas;
  *
  * @author mugarov
  */
-public abstract class BBXArgument {
+public interface BBXArgument {
     
 }

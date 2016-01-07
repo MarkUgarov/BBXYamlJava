@@ -9,7 +9,7 @@ package yamlparse.datatypes.bioboxdatas;
  *
  * @author Mark
  */
-public class Fasta_DirType extends BBXArgument{
+public class Fasta_DirType implements BBXArgument{
     
     private String fasta_dir;
 

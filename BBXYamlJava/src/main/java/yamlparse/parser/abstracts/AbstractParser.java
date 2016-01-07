@@ -9,6 +9,6 @@ package yamlparse.parser.abstracts;
  *
  * @author Mark
  */
-public class AbstractParser {
+public abstract class AbstractParser {
     
 }

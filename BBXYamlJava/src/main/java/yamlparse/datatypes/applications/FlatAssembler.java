@@ -10,7 +10,11 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- *
+ * This is a comfortable class in which holds the same parameters 
+ * as Assembler, but also provides direct methods to get parameters of
+ * higher level directly. 
+ * E.g. you can use #FlatAssembler.getDockerhub() instead of 
+ * #FlatAssembler.getImage().getDockerhub().
  * @author Mark
  */
 public class FlatAssembler {
@@ -48,6 +52,10 @@ public class FlatAssembler {
         this.tasks = tsk;
     }
     
+    /**
+     * @return an ArrayList<String> containing dockerhub, repository and source
+     * (in this order)
+     */
     public ArrayList<String> getImage(){
         ArrayList<String> ret = new ArrayList<>();
         ret.add(this.dockerhub);

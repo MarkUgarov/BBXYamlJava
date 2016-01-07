@@ -1,0 +1,60 @@
+@inproceedings{AE:LKR98,
+  author       = {L{\"o}ffler, Axel and Klahold, J{\"u}rgen and R{\"u}ckert, Ulrich},
+  title        = {{The Dynamical Nightwatch's Problem Solved by the Autonomous Micro-Robot Khepera}},
+  booktitle    = {Selected Papers of the 3rd European Conference on Artificial Evolution (AE97)},
+  year         = {1998},
+  editor       = {Hao, Jin-Kao and Lutton, Evelyne and Ronald, Edmund and Schoenauer, Marc and Snyers, Dominique},
+  volume       = {1363},
+  series       = {Lecture Notes in Computer Science},
+  pages        = {303--313},
+  address      = {N{\^i}mes, France},
+  month        = {22 - 24 } # oct,
+  organization = {},
+  publisher    = {Springer-Verlag},
+  note         = {Beispiel für einen Konferenzbeitrag.},
+  language     = {english}
+}
+
+@proceedings{IKW:LMR99,
+  title        = {{Experiments with the Mini-Robot Khepera, Proceedings of the 1st International Khepera Workshop}},
+  year         = {1999},
+  editor       = {L{\"o}ffler, Axel and Mondada, Francesco and R{\"u}ckert, Ulrich},
+  publisher    = {},
+  volume       = {64},
+  organization = {},
+  series       = {HNI-Verlagsschriftenreihe},
+  address      = {Paderborn, Germany},
+  month        = {10 - 11 } # dec,
+  note         = {Beispiel für einen Konferenzband.},
+  language     = {english}
+}
+
+@booklet{Latex:KPSH,
+  author       = {Knappen, Jörg and Partl, Hubert and Schlegl, Elisabeth and Hyna, Irene},
+  title        = {{\LaTeXe -Kurzbeschreibung}},
+  howpublished = {WWW-Publikation},
+  month        = {10 } # apr,
+  year         = {2003},
+  note         = {\url{ftp://dante.ctan.org/tex-archive/info/lshort/german/}},
+  language     = {german}
+}
+
+@book{Latex:Kopka,
+  author       = {Kopka, Helmut},
+  title        = {{LaTeX I. Einführung}},
+  publisher    = {Addison-Wesley},
+  year         = {2002},
+  month        = apr,
+  note         = {},
+  language     = {german}
+}
+
+@book{Latex:Goosens,
+  author       = {Goosens, Michel and Mittelbach, Frank and Samarin, Alexander},
+  title        = {{Der LATEX- Begleiter}},
+  publisher    = {Addison-Wesley},
+  year         = {2002},
+  month        = may,
+  note         = {},
+  language     = {german}
+}

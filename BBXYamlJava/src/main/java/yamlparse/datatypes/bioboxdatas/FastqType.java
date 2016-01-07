@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Mark Ugarov
  */
-public class FastqType extends BBXArgument{
+public class FastqType implements BBXArgument{
     
     private List<DataFormat> fastq;
 
