@@ -20,7 +20,7 @@ to the repositories-section. Also add
 <dependency>
     <groupId>com.mugarov </groupId>
     <artifactId>BBXYamlJava</artifactId>
-    <version>v0.2.0</version>
+    <version>v0.2.3</version>
     <type>jar</type>
 </dependency>
 ~~~
