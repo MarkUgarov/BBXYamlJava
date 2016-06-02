@@ -1,5 +1,3 @@
-[![Circle CI](https://circleci.com/gh/MarkUgarov/BBXYamlJava/tree/master.svg?style=svg)](https://circleci.com/gh/MarkUgarov/BBXYamlJava/tree/master)
-
 # BBXYamlJava
 A Module originally planed for SITB. Converts particular .yaml-files (describing lists of applications) into abstract Java - objects and other particular Java - obects in biobox.yaml  - files.
 
@@ -30,7 +28,7 @@ to the dependencies- section. Please check if there is a better version for you 
 
 ## Step 2: How to use.
 
-For practical examples: See JUnit-Tests in this package and have a look at the pdf in directory "documentation".. 
+For practical examples: See JUnit-Tests in this package and have a look at the pdf file in the directory named documentation. 
 
 You will need to import import yamlparse.BBXYamlJava first, then make an instance out of this class. 
 
@@ -89,15 +87,7 @@ into your .pom- file. Also do not forget to add your groupId and the version. It
       ...
 ~~~
 
-- Use "mvn clean deploy" on command line or use Netbeans like this:
-  - first go to the menu-point Tools -> Options
-  - click "Java" in the Register and then "Maven" below
-  - go to "Execution" and click on "Edit Global Custom Goal Definitions"
-  - click "add" and type anything like "Deploy" or whatever you desire
-  - click on "ok" and choose that Action in the list - then write "deploy" in the field for  "Executive Goals"
-  - click "ok", then "ok" again to close the Options
-  - rightclick on your Project in the Projects-Register (should be on the left side of your Netbeans)
-  - go to "Custom" and click "Deploy" (or however you named it)
+- Use mvn clean deploy 
 - Make a directory like #projectPath/hostdata you want to use for hosting (lets say it's the $HOST now). 
 - Then go to #projectPath/target/mvn-repo. There should be a directory structure underneath describing your groupId. Go deeper into that until you reach the maven-metadata - files. Copy all the files and directories in this directory into $HOST by using the replace-option.
 - If this is not your first version: Go back to $HOST and edit the maven-metadata.xml - file by adding all versionnumbers you shared in your $HOST in the <versioning> - section. 
@@ -126,7 +116,7 @@ It could look like this if you also had an release:
  ~~~XML
  <repository>
     <id>anyID</id>
-    <url>https://github.com/YOUR_ACCOUNT_NAME/YOUR_REPOSITORY_NAME/raw/YOUR_BRANCH_NAME</url>
+    <url>https://github.com/YOUR_ACCOUNT_NAME/YOUR_REPOSITORY_NAME/raw/YOUR_BRANCH_NAME/$HOST</url>
 </repository>
 ~~~
 
