@@ -116,7 +116,7 @@ It could look like this if you also had an release:
  ~~~XML
  <repository>
     <id>anyID</id>
-    <url>https://github.com/YOUR_ACCOUNT_NAME/YOUR_REPOSITORY_NAME/raw/YOUR_BRANCH_NAME</url>
+    <url>https://github.com/YOUR_ACCOUNT_NAME/YOUR_REPOSITORY_NAME/raw/YOUR_BRANCH_NAME/$HOST</url>
 </repository>
 ~~~
 
